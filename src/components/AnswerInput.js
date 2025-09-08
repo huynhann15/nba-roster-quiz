@@ -1,17 +1,18 @@
-import React, {useMemo} from "react";
+import React, {useState, useMemo} from "react";
 import Fuse from "fuse.js";
 
 export default function AnswerInput({ input, setInput, handleGuess, disabled, players = []}) {
+    const[showHelp, setShowHelp] = useState(false);
     //creating fuse index
     //useMemo for player change
     const fuse = useMemo(
-        () => new Fuse(players, {keys: ["playerName"], threshold:0.4}),
+        () => new Fuse(players, {keys: ["playerName"], threshold:0.3}),
         [players]
         );
 
     const suggestions =
-        input.trim() && !disabled 
-        ? fuse.search(input).slice(0,1)
+        showHelp && input
+        ? fuse.search(input).slice(0,1).map((r) => r.item.playerName)
         : [];
 
   return (
@@ -30,18 +31,26 @@ export default function AnswerInput({ input, setInput, handleGuess, disabled, pl
         Submit
       </button>
     </form>
+      <button
+        type="button"
+        onClick={() => setShowHelp(!showHelp)}
+        disabled={disabled}
+        >
+          {showHelp ? "Hide Spelling Help" : "Show Spelling Help"}
+        </button>
 
-      {suggestions.length > 0 && (
-        <ul className="suggestions-list">
-          {suggestions.map(({ item }) => (
-            <li
-              key={item.playerId}
-              className="suggestion"
-              onClick={() => setInput(item.playerName.split(" ").pop())}
-            >
-              {item.playerName}
-            </li>
-          ))}
+
+      {showHelp && suggestions.length > 0 && (
+        <ul className="suggestions">
+            {suggestions.map((name, idx) => (
+                <li
+                  key={idx}
+                  onClick={() => setInput(name)}
+                  className="suggestion-item"
+                  >
+                    {name}
+                  </li>
+            ))}
         </ul>
       )}
     </div>
