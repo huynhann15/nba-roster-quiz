@@ -1,7 +1,6 @@
 import React from "react";
-
+import "./RosterGrid.css"
 export default function RosterGrid({ team, correct, teams, selectedTeam }) {
-  // Determine which teams to display
   const teamsToDisplay =
     selectedTeam === "all" ? teams : [selectedTeam];
 
