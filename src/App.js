@@ -43,9 +43,6 @@ const handleGuess = (e) => {
   setInput("");
 };
 
-
-
-  // --- Screens ---
   if (!started && !selectedTeam) {
     return (
       <div className="App">
