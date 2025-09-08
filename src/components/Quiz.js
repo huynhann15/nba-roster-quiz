@@ -17,13 +17,14 @@ export default function Quiz({
   const [paused, setPaused] = useState(false);
   const [stopped, setStopped] = useState(false);
 
-  // Determine total number of players for scoring
-  const totalPlayers =
-    selectedTeam === "all"
-      ? teams.reduce((sum, t) => sum + t.players.length, 0)
-      : selectedTeam.players.length;
+  const players =
+    selectedTeam ==="all"
+    ? teams.flatMap((t) => t.players)
+    : selectedTeam.players;
 
-  // Automatically stop timer when all names are guessed
+  const totalPlayers = players.length;
+
+  // stops timer when all names guessed
   useEffect(() => {
     if (correct.length === totalPlayers) {
       setStopped(true);
@@ -44,7 +45,6 @@ export default function Quiz({
           stopped={stopped}
         />
       <div className="controls">
-        {/* Only show pause/resume if not stopped */}
         {!stopped && (
           <button onClick={() => setPaused(!paused)}>
             {paused ? "Resume" : "Pause"}
@@ -58,9 +58,9 @@ export default function Quiz({
         setInput={setInput}
         handleGuess={handleGuess}
         disabled={stopped}
+        //making players an array
+        players={players}
       />
-
-      {/* Pass teams array and selectedTeam to RosterGrid */}
       <RosterGrid
         teams={teams}
         selectedTeam={selectedTeam}
