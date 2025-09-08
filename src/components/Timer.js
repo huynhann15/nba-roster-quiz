@@ -2,16 +2,13 @@ import React, { useEffect, useState } from "react";
 
 const INTERVAL = 100; // update every 0.1s
 
-export const Timer = ({ duration, onTimeEnd, paused = false, stopped = false }) => {
-  
-  const [time, setTime] = useState(() => {
-    return duration === "infinite" ? 0 : duration;
-  });
+export const Timer = ({ duration, onTimeEnd, paused, stopped }) => {
+  const [time, setTime] = useState(duration === "infinite" ? 0 : duration);
   const [referenceTime, setReferenceTime] = useState(Date.now());
 
   useEffect(() => {
-    if(duration !=="infinite") return;
-
+    const isInfinite = duration === "infinite";
+    if (stopped) return;
 
     const intervalId = setInterval(() => {
       if (paused) return;
@@ -36,20 +33,21 @@ export const Timer = ({ duration, onTimeEnd, paused = false, stopped = false }) 
 
     return () => clearInterval(intervalId);
   }, [duration, referenceTime, paused, stopped, onTimeEnd]);
-    
-const pad = (n) => (n < 10 ? `0${n}` : n);
-  //include hours for infinite
-  if(duration === "infinte"){
-    const totalSeconds = Math.floor(time / 1000);
-    const hours = Math.floor(totalSeconds /3600);
+
+
+  const totalSeconds = Math.ceil(time / 1000);
+  if (duration === "infinite") {
+    //hours added
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+    const pad = (n) => (n < 10 ? `0${n}` : n);
+    return <span>{hours}:{pad(minutes)}:{pad(seconds)}</span>;
+  } else {
+    // minutes:seconds for set
     const minutes = Math.floor(totalSeconds / 60);
     const seconds = totalSeconds % 60;
-    return <span>{pad(hours)}:{pad(minutes)}:{pad(seconds)}</span>;
-  //minutes:seconds for set
-  } else{
-    const totalSeconds = Math.floor(time / 1000);
-    const minutes = Math.floor(totalSeconds / 60);
-    const seconds = totalSeconds % 60;
+    const pad = (n) => (n < 10 ? `0${n}` : n);
     return <span>{minutes}:{pad(seconds)}</span>;
   }
 };
