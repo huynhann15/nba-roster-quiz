@@ -37,7 +37,6 @@ export default function AnswerInput({ input, setInput, handleGuess, disabled, pl
 
   return (
     <div className="answer-input-container">
-    <form onSubmit={handleGuess} className="answer-input">
       <input
         type="text"
         value={input}
@@ -47,7 +46,6 @@ export default function AnswerInput({ input, setInput, handleGuess, disabled, pl
         autoFocus
         autoComplete="off"
       />
-    </form>
       <button
         type="button"
         onClick={() => setShowHelp(!showHelp)}
