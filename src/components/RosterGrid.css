@@ -23,7 +23,8 @@
 
 .team-name {
   font-weight: bold;
-  font-size: 0.8rem;
+  font: "Helvetica";
+  font-size: 1rem;
   margin-bottom: 5px;
   flex-shrink: 0;
 }

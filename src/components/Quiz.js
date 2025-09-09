@@ -3,7 +3,6 @@ import { Timer } from "./Timer";
 import Score from "./Score";
 import AnswerInput from "./AnswerInput";
 import RosterGrid from "./RosterGrid";
-import './Quiz.css';
 
 export default function Quiz({
   selectedTeam,
@@ -51,7 +50,7 @@ export default function Quiz({
          </div>
 
         <div className="column timer-box">
-            <p>Timer:</p>
+            Timer: 
             <Timer
                 duration={duration}
                 onTimeEnd={() => setEnded(true)}
@@ -63,10 +62,11 @@ export default function Quiz({
             {!stopped && (
                 <div className="column pause-box">
             <button className="pause-btn" onClick={() => setPaused(!paused)}>
-            {paused ? "Resume" : "Pause"}
+            {paused ? "►" : " ⏸"}
             </button>
             </div>
             )}
+
         </div>
 
       <RosterGrid

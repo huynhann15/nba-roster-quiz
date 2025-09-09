@@ -5,8 +5,8 @@
   align-items: center;
   flex-wrap: wrap;
   background: no-repeat center url("background.jpg"); 
-  background-size: cover;
-  padding-top:70px;
+   background-size: cover;
+   padding-top:80px;
 }
 
 .quiz-header {
@@ -20,7 +20,10 @@
 /* for background to stay put */
   position: fixed;
   z-index: 1000;
-  background:transparent;
+  color:white;
+  font-family: "Helvetica";
+  font-size:1.38rem;
+  font-weight:bold;
 
 
 
@@ -37,23 +40,35 @@
 }
 
 .input-box input {
-  background: #1D428a;
-  color: white;
+  gap: 10px;
+  background: #e6e9f0;
+  color: #1D428a;
   flex: 1;
   width: 250px;
   padding: 6px;
-  font-size: 0.9rem;
+  font-size: .89rem;
+  flex: 0 0 200px;
+  border-radius: 6px;
+  border: none;
 }
-.input-box {
+.input-w-helper {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 5px;
+  align-items:center;
+  font-size: 0.9rem
 }
 .spelling-help-btn {
   background: #1D428a;
   color: white;
   flex: 0 0 auto;
+  border: none;  border-radius: 6px;
+  
 }
+.spelling-help-btn:hover {
+  background: #517ac8;
+}
+
 
 .score-box, 
 .timer-box {
@@ -62,9 +77,17 @@
 }
 
 .pause-btn {
-  font-size: 0.9rem;
-  background: white;
+  font-size: 0.8rem;
+  width: 30px;
+  height:30px;
+  align-items:center;
+  padding: 0;
+  border-radius: 6px;
+  border: none;  
+  background-color: #1D428a;
+  color: white;
+  cursor: pointer;
 }
 .pause-btn:hover {
-  background: #3b5d9b;
+  background: #517ac8;
 }

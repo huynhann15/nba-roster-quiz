@@ -25,6 +25,7 @@ export default function StartScreen({
   };
 
   return (
+    <div className="model-overlay">
     <div className="start-screen">
       <h1>NBA Roster Quiz</h1>
 
@@ -60,6 +61,7 @@ export default function StartScreen({
       <button onClick={handleStart} disabled={!teams}>
         Start
       </button>
+    </div>
     </div>
   );
 }

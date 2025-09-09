@@ -38,17 +38,19 @@ export default function AnswerInput({ input, setInput, handleGuess, disabled, pl
 
   return (
     <div className="answer-input-container">
+        <div className="input-w-helper">
       <input
         type="text"
         value={input}
         onChange={handleChange}
-        placeholder="Enter player's name/last name"
+        placeholder="Enter player name/last name"
         disabled={disabled}
         autoFocus
         autoComplete="off"
       />
       <button
         type="button"
+        className="spelling-help-btn"
         onClick={() => setShowHelp(!showHelp)}
         disabled={disabled}
         >
@@ -70,5 +72,7 @@ export default function AnswerInput({ input, setInput, handleGuess, disabled, pl
         </ul>
       )}
     </div>
+    </div>
   );
+  
 }
