@@ -1,35 +1,46 @@
+
 .quiz {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  flex-wrap: wrap;
+  background: no-repeat center url("background.jpg"); 
+  background-size: cover;
+  padding-top:70px;
 }
 
 .quiz-header {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  width: 100%;
+  margin-right:10px;
   align-items: center;
   top: 0;
   left: 0;
-  width: 100%;
-  gap: 30px;
-}
+  gap: 15px;
+/* for background to stay put */
+  position: fixed;
+  z-index: 1000;
+  background:transparent;
 
 
-.quiz-box {
+
+.column {
+  float:left;
   padding: 6px 10px;
   border-radius: 6px;
   background: #1D428a;
   color: white;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  font-family: 'Helvetica';
+
+}
 }
 
 .input-box input {
+  background: #1D428a;
+  color: white;
   flex: 1;
   width: 250px;
-  background: #1D428a;
-  color:white;
   padding: 6px;
   font-size: 0.9rem;
 }
@@ -39,6 +50,8 @@
   gap: 5px;
 }
 .spelling-help-btn {
+  background: #1D428a;
+  color: white;
   flex: 0 0 auto;
 }
 
@@ -50,7 +63,7 @@
 
 .pause-btn {
   font-size: 0.9rem;
-  background: #1D428a;
+  background: white;
 }
 .pause-btn:hover {
   background: #3b5d9b;

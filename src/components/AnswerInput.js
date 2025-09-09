@@ -14,7 +14,7 @@ export default function AnswerInput({ input, setInput, handleGuess, disabled, pl
     const handleChange = (e) => {
         const val = e.target.value;
         setInput(val);
-        
+
         if (resumeTimer){
             resumeTimer();
         }

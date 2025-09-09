@@ -1,5 +1,6 @@
 .roster-grid-container.all-teams {
   display: grid;
+  padding-top: 70px;
   grid-template-columns: repeat(5, 1fr);
   gap: 10px;
   padding: 10px;
@@ -7,6 +8,8 @@
   height: 100vh;      
   overflow-y: auto; 
   box-sizing: border-box;
+  height: calc(100vh - 80px);
+  overflow-y:auto;
 }
 
 .team-card {
@@ -66,19 +69,11 @@
   height: 40px;
 }
 
-
-
-
-
-
 .player-name {
   font-weight: bold;
 }
 
 
-/* ----------------------
-   Single Team Grid
-   ---------------------- */
 .roster-grid-container.single-team h2 {
   margin-bottom: 10px;
 }

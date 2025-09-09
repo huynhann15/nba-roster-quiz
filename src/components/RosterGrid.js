@@ -28,7 +28,7 @@ export default function RosterGrid({ correct, teams, selectedTeam }) {
                         <p className="player-name">{player.playerName}</p>
                       </>
                     ) : (
-                      <div className="placeholder"> <img src="/assets/basketball-icon.png" alt="placeholder" className="placeholder-image"/> </div>
+                      <div className="placeholder"> <img src="/assets/placeholderbasketball.png" alt="placeholder" className="placeholder-image"/> </div>
                     )}
                   </div>
                 );

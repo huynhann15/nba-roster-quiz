@@ -35,7 +35,7 @@ export default function Quiz({
   return (
     <div className="quiz">
         <div className="quiz-header">
-            <div className="quiz-box input-box">
+            <div className="column input-box">
                 <AnswerInput
                 input={input}
                 setInput={setInput}
@@ -46,11 +46,12 @@ export default function Quiz({
                 />
             </div>
 
-        <div className="quiz-box score-box">
+        <div className="column score-box">
             <Score correct={correct.length} total={totalPlayers} />
          </div>
 
-        <div className="quiz-box timer-box">
+        <div className="column timer-box">
+            <p>Timer:</p>
             <Timer
                 duration={duration}
                 onTimeEnd={() => setEnded(true)}
@@ -60,7 +61,7 @@ export default function Quiz({
             </div>
 
             {!stopped && (
-                <div className="quiz-box pause-box">
+                <div className="column pause-box">
             <button className="pause-btn" onClick={() => setPaused(!paused)}>
             {paused ? "Resume" : "Pause"}
             </button>
@@ -76,4 +77,5 @@ export default function Quiz({
     </div>
   );
 }
+
 

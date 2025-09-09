@@ -4,7 +4,7 @@ export default function Score({ correct, total }) {
   return (
     <div className="score">
       <p>
-        Correct guesses: <strong>{correct}</strong> / {total}
+         <strong>{correct}</strong> / {total}
       </p>
     </div>
   );
