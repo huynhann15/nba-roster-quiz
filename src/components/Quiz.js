@@ -60,6 +60,7 @@ export default function Quiz({
         disabled={stopped}
         //making players an array
         players={players}
+        resumeTimer={() => setPaused(false)}
       />
       <RosterGrid
         teams={teams}

@@ -26,19 +26,19 @@ const handleGuess = (e) => {
       : selectedTeam.players;
 
   const matches = allPlayers.filter((p) => {
-    const lastName = p.playerName.split(" ").slice(-1)[0].toLowerCase();
-    return lastName === guess;
+    const fullName = p.playerName.split(" ");
+    const lastName = fullName.slice(1).join(" ").toLowerCase();
+    return p.playerName.toLowerCase() === guess || lastName === guess;
   });
 
   if (matches.length > 0) {
-    // adds players not guessed yet
-    const newCorrect = matches
-      .map((p) => p.playerName)
-      .filter((name) => !correct.includes(name));
-
-    if (newCorrect.length > 0) {
-      setCorrect([...correct, ...newCorrect]);
-    }
+    const newCorrect = [
+      ...new Set([
+        ...correct,
+        ...matches.map((p) => p.playerName),
+      ]),
+    ];
+    setCorrect(newCorrect);
   }
   setInput("");
 };

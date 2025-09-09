@@ -1,7 +1,7 @@
 import React, {useState, useMemo} from "react";
 import Fuse from "fuse.js";
 
-export default function AnswerInput({ input, setInput, handleGuess, disabled, players = []}) {
+export default function AnswerInput({ input, setInput, handleGuess, disabled, players = [], resumeTimer}) {
     const[showHelp, setShowHelp] = useState(false);
     //creating fuse index
     //useMemo for player change
@@ -9,7 +9,27 @@ export default function AnswerInput({ input, setInput, handleGuess, disabled, pl
         () => new Fuse(players, {keys: ["playerName"], threshold:0.3}),
         [players]
         );
+    //for resuming timer from typing name
+    const handleChange = (e) => {
+        const val = e.target.value;
+        setInput(val);
+        
+        if (resumeTimer){
+            resumeTimer();
+        }
 
+    const match = players.find((p) => {
+        const parts = p.playerName.split(" ");
+        const last = parts[parts.length - 1];
+        return(
+            val.toLowerCase() === last.toLowerCase() || val.toLowerCase() === p.playerName.toLowerCase()
+        );
+    });
+
+    if (match){
+        handleGuess({preventDefault: () => {} }, val);
+        }
+    };
     const suggestions =
         showHelp && input
         ? fuse.search(input).slice(0,1).map((r) => r.item.playerName)
@@ -21,8 +41,8 @@ export default function AnswerInput({ input, setInput, handleGuess, disabled, pl
       <input
         type="text"
         value={input}
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="Enter player's last name"
+        onChange={handleChange}
+        placeholder="Enter player's name/last name"
         disabled={disabled}
         autoFocus
         autoComplete="off"

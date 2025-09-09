@@ -5,8 +5,14 @@ const INTERVAL = 100; // update every 0.1s
 export const Timer = ({ duration, onTimeEnd, paused, stopped }) => {
   const [time, setTime] = useState(duration === "infinite" ? 0 : duration);
   const [referenceTime, setReferenceTime] = useState(Date.now());
-
+    //for resuming from a pause
   useEffect(() => {
+    if (!paused){
+        setReferenceTime(Date.now());
+    }
+    }, [paused]);
+
+  useEffect(() =>{
     const isInfinite = duration === "infinite";
     if (stopped) return;
 
