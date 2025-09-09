@@ -17,7 +17,7 @@ function App() {
 const handleGuess = (e, overrideGuess) => {
   if(e && typeof e.preventDefault === "function") e.preventDefault();
   if (!selectedTeam) return;
-  
+
   //in case of stale input
   const guess = (overrideGuess ?? input).trim().toLowerCase();
   if (!guess) return;
@@ -28,8 +28,8 @@ const handleGuess = (e, overrideGuess) => {
       : selectedTeam.players || [];
 
   const matches = allPlayers.filter((p) => {
-    const fullName = p.playerName.split(" ");
-    const parts = p.playerName.split(" ");
+    const fullName = p.playerName.trim().toLowerCase();
+    const parts = p.playerName.trim().split(" ");
     const lastName = parts[parts.length - 1].toLowerCase();
     return fullName === guess || lastName === guess;
   });
