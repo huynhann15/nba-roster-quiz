@@ -47,9 +47,6 @@ export default function AnswerInput({ input, setInput, handleGuess, disabled, pl
         autoFocus
         autoComplete="off"
       />
-      <button type="submit" disabled={disabled}>
-        Submit
-      </button>
     </form>
       <button
         type="button"
