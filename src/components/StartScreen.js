@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './StartScreen.css';
 
 export default function StartScreen({
   teams,
@@ -27,7 +28,6 @@ export default function StartScreen({
     <div className="start-screen">
       <h1>NBA Roster Quiz</h1>
 
-      {/* Team selection */}
       <p>Select a team:</p>
       <select
         onChange={(e) => {
@@ -47,7 +47,6 @@ export default function StartScreen({
         ))}
       </select>
 
-      {/* Custom timer input */}
       <p>Timer:</p>
       <input
         type="number"

@@ -1,5 +1,6 @@
 import React, {useState, useMemo} from "react";
 import Fuse from "fuse.js";
+import './AnswerInput.css'
 
 export default function AnswerInput({ input, setInput, handleGuess, disabled, players = [], resumeTimer}) {
     const[showHelp, setShowHelp] = useState(false);

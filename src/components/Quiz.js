@@ -3,6 +3,7 @@ import { Timer } from "./Timer";
 import Score from "./Score";
 import AnswerInput from "./AnswerInput";
 import RosterGrid from "./RosterGrid";
+import './Quiz.css';
 
 export default function Quiz({
   selectedTeam,
@@ -31,37 +32,42 @@ export default function Quiz({
     }
   }, [correct, totalPlayers]);
 
-  const isInfinite = duration === "infinite";
-
   return (
     <div className="quiz">
-      <div className="status">
-        <Score correct={correct.length} total={totalPlayers} />
-      </div>
-        <Timer
-          duration={duration}
-          onTimeEnd={() => setEnded(true)}
-          paused={paused}
-          stopped={stopped}
-        />
-      <div className="controls">
-        {!stopped && (
-          <button onClick={() => setPaused(!paused)}>
-            {paused ? "Resume" : "Pause"}
-          </button>
-        )}
-        {isInfinite && <span style={{ marginLeft: "10px" }}></span>}
-      </div>
+        <div className="quiz-header">
+            <div className="quiz-box input-box">
+                <AnswerInput
+                input={input}
+                setInput={setInput}
+                handleGuess={handleGuess}
+                disabled={stopped}
+                players={players}
+                resumeTimer={() => setPaused(false)}
+                />
+            </div>
 
-      <AnswerInput
-        input={input}
-        setInput={setInput}
-        handleGuess={handleGuess}
-        disabled={stopped}
-        //making players an array
-        players={players}
-        resumeTimer={() => setPaused(false)}
-      />
+        <div className="quiz-box score-box">
+            <Score correct={correct.length} total={totalPlayers} />
+         </div>
+
+        <div className="quiz-box timer-box">
+            <Timer
+                duration={duration}
+                onTimeEnd={() => setEnded(true)}
+                paused={paused}
+                stopped={stopped}
+            />
+            </div>
+
+            {!stopped && (
+                <div className="quiz-box pause-box">
+            <button className="pause-btn" onClick={() => setPaused(!paused)}>
+            {paused ? "Resume" : "Pause"}
+            </button>
+            </div>
+            )}
+        </div>
+
       <RosterGrid
         teams={teams}
         selectedTeam={selectedTeam}

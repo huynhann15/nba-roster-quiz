@@ -1,0 +1,89 @@
+.roster-grid-container.all-teams {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  padding: 10px;
+  width: 100%;
+  height: 100vh;      
+  overflow-y: auto; 
+  box-sizing: border-box;
+}
+
+.team-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 5px;
+  background-color: #f8f8f8;
+}
+
+.team-name {
+  font-weight: bold;
+  font-size: 0.8rem;
+  margin-bottom: 5px;
+  flex-shrink: 0;
+}
+
+.roster-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 6px;
+}
+
+.player-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 4px;
+  background-color: #f0f0f0;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.player-card img.player-image {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.player-card .player-name {
+  margin-top: 4px;
+  font-size: 0.65rem;
+  word-break: break-word;
+}
+
+.player-card .placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+}
+
+.player-card .placeholder-image {
+  width: 40px;
+  height: 40px;
+}
+
+
+
+
+
+
+.player-name {
+  font-weight: bold;
+}
+
+
+/* ----------------------
+   Single Team Grid
+   ---------------------- */
+.roster-grid-container.single-team h2 {
+  margin-bottom: 10px;
+}
+
+.roster-grid-container.single-team .roster-grid {
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+}

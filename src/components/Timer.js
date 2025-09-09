@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const INTERVAL = 100; // update every 0.1s
+const INTERVAL = 100;
 
 export const Timer = ({ duration, onTimeEnd, paused, stopped }) => {
   const [time, setTime] = useState(duration === "infinite" ? 0 : duration);

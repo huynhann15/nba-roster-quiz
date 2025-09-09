@@ -1,0 +1,57 @@
+.quiz {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.quiz-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  gap: 30px;
+}
+
+
+.quiz-box {
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: #1D428a;
+  color: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.input-box input {
+  flex: 1;
+  width: 250px;
+  background: #1D428a;
+  color:white;
+  padding: 6px;
+  font-size: 0.9rem;
+}
+.input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.spelling-help-btn {
+  flex: 0 0 auto;
+}
+
+.score-box, 
+.timer-box {
+  display: 1;
+  font-size: 1rem;
+}
+
+.pause-btn {
+  font-size: 0.9rem;
+  background: #1D428a;
+}
+.pause-btn:hover {
+  background: #3b5d9b;
+}
