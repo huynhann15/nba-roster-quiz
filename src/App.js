@@ -14,21 +14,24 @@ function App() {
   const [input, setInput] = useState("");
   const [duration, setDuration] = useState("infinite"); // null creates error
 
-const handleGuess = (e) => {
-  e.preventDefault();
-  if (!selectedTeam || !input) return;
-
-  const guess = input.trim().toLowerCase();
+const handleGuess = (e, overrideGuess) => {
+  if(e && typeof e.preventDefault === "function") e.preventDefault();
+  if (!selectedTeam) return;
+  
+  //in case of stale input
+  const guess = (overrideGuess ?? input).trim().toLowerCase();
+  if (!guess) return;
 
   const allPlayers =
     selectedTeam === "all"
       ? teams.flatMap((t) => t.players)
-      : selectedTeam.players;
+      : selectedTeam.players || [];
 
   const matches = allPlayers.filter((p) => {
     const fullName = p.playerName.split(" ");
-    const lastName = fullName.slice(1).join(" ").toLowerCase();
-    return p.playerName.toLowerCase() === guess || lastName === guess;
+    const parts = p.playerName.split(" ");
+    const lastName = parts[parts.length - 1].toLowerCase();
+    return fullName === guess || lastName === guess;
   });
 
   if (matches.length > 0) {
