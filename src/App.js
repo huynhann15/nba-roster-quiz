@@ -54,7 +54,6 @@ function App() {
       />
       )}
 
-      {/* Show start screen modal if team not selected */}
       {!selectedTeam && (
         <StartScreen
           teams={teams}
@@ -63,7 +62,6 @@ function App() {
         />
       )}
 
-      {/* Show results when ended */}
       {ended && selectedTeam && (
         <ResultsScreen team={selectedTeam} correct={correct} teams={teams} />
       )}
