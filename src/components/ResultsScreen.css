@@ -55,8 +55,14 @@
   word-break: break-word;
 }
 
+.player-card .missed{
+    background-color: #ffe6e6;
+}
+
 .player-card .missed-label {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
+  font-family:"Helvetica";
+  font-display: bold;
   color: red;
   margin-top: 2px;
 }
