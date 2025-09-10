@@ -14,6 +14,7 @@ export default function Quiz({
   setEnded,
   duration,
   teams,
+  setElapsedTime,
 }) {
   const [paused, setPaused] = useState(false);
   const [stopped, setStopped] = useState(false);
@@ -64,6 +65,7 @@ export default function Quiz({
             onTimeEnd={() => setEnded(true)}
             paused={paused}
             stopped={stopped}
+            onTimeUpdate={setElapsedTime}
           />
         </div>
 

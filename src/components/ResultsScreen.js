@@ -1,7 +1,12 @@
 import React from "react";
 import "./ResultsScreen.css";
 
-export default function ResultsScreen({ team, correct, teams }) {
+export default function ResultsScreen({ team, correct, teams, elapsedTime }) {
+    const totalSecs = Math.ceil(elapsedTime/1000);
+    const minutes = Math.floor(totalSecs/60);
+    const seconds = totalSecs % 60;
+    const pad = (n) => (n < 10 ? `0${n}` : n);
+
   // determine the list of players to display
   const players =
     team === "all"
@@ -19,6 +24,7 @@ export default function ResultsScreen({ team, correct, teams }) {
         You guessed <strong>{correct.length}</strong> out of{" "}
         <strong>{players.length}</strong> players!
       </p>
+        <p>Time: <strong>{minutes}:{pad(seconds)}</strong></p>
 
       <div className="results-grid">
         {players.map((player) => {

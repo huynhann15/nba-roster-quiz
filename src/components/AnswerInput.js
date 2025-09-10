@@ -7,7 +7,7 @@ export default function AnswerInput({ input, setInput, handleGuess, disabled, pl
     //creating fuse index
     //useMemo for player change
     const fuse = useMemo(
-        () => new Fuse(players, {keys: ["playerName"], threshold:0.3}),
+        () => new Fuse(players, {keys: ["playerName"], threshold:0.3}), //threshold: 0=strict, 1=loose
         [players]
         );
     //for resuming timer from typing name

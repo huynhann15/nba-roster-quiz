@@ -1,60 +1,66 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 const INTERVAL = 100;
 
-export default function Timer ({ duration, onTimeEnd, paused, stopped }) {
+export default function Timer({ duration, onTimeEnd, paused, stopped, onTimeUpdate }) {
   const [time, setTime] = useState(duration === "infinite" ? 0 : duration);
-  const [referenceTime, setReferenceTime] = useState(Date.now());
-    //for resuming from a pause
-  useEffect(() => {
-    if (!paused){
-        setReferenceTime(Date.now());
-    }
-    }, [paused]);
+  const referenceTimeRef = useRef(Date.now());
 
-  useEffect(() =>{
-    const isInfinite = duration === "infinite";
+  // Update reference time when pause toggles
+  useEffect(() => {
+    if (!paused) {
+      referenceTimeRef.current = Date.now();
+    }
+  }, [paused]);
+
+  useEffect(() => {
     if (stopped) return;
+
+    const isInfinite = duration === "infinite";
 
     const intervalId = setInterval(() => {
       if (paused) return;
 
-      setTime((prevTime) => {
+      setTime(prevTime => {
         const now = Date.now();
-        const delta = now - referenceTime;
-        setReferenceTime(now);
+        const delta = now - referenceTimeRef.current;
+        referenceTimeRef.current = now;
 
+        let newTime;
         if (isInfinite) {
-          return prevTime + delta;
+          newTime = prevTime + delta;
         } else {
-          if (prevTime - delta <= 0) {
+          newTime = prevTime - delta <= 0 ? 0 : prevTime - delta;
+          if (newTime === 0 && onTimeEnd) {
             clearInterval(intervalId);
-            if (onTimeEnd) onTimeEnd();
-            return 0;
+            onTimeEnd();
           }
-          return prevTime - delta;
         }
+
+        if (onTimeUpdate) onTimeUpdate(newTime);
+
+        return newTime;
       });
     }, INTERVAL);
 
     return () => clearInterval(intervalId);
-  }, [duration, referenceTime, paused, stopped, onTimeEnd]);
+  }, [duration, paused, stopped, onTimeEnd, onTimeUpdate]);
 
 
   const totalSeconds = Math.ceil(time / 1000);
+  const pad = n => (n < 10 ? `0${n}` : n);
+
   if (duration === "infinite") {
-    //hours added
+    //hh:mm:ss
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);
     const seconds = totalSeconds % 60;
-    const pad = (n) => (n < 10 ? `0${n}` : n);
     return <span>{hours}:{pad(minutes)}:{pad(seconds)}</span>;
   } else {
-    // minutes:seconds for set
+    //mm:ss
     const minutes = Math.floor(totalSeconds / 60);
     const seconds = totalSeconds % 60;
-    const pad = (n) => (n < 10 ? `0${n}` : n);
     return <span>{minutes}:{pad(seconds)}</span>;
   }
-};
+}
 

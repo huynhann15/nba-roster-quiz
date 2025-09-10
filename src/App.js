@@ -12,6 +12,7 @@ function App() {
   const [correct, setCorrect] = useState([]);
   const [input, setInput] = useState("");
   const [duration, setDuration] = useState("infinite");
+  const [elapsedTime, setElapsedTime] = useState(0);
 
   const handleGuess = (e, overrideGuess) => {
     if (e?.preventDefault) e.preventDefault();
@@ -61,11 +62,12 @@ function App() {
           setEnded={setEnded}
           duration={duration}
           teams={teams}
+          setElapsedTime={setElapsedTime}
         />
       )}
 
       {ended && selectedTeam && (
-        <ResultsScreen team={selectedTeam} correct={correct} teams={teams} />
+        <ResultsScreen team={selectedTeam} correct={correct} teams={teams} elapsedTime= {elapsedTime}/>
       )}
     </div>
   );
