@@ -12,63 +12,39 @@ function App() {
   const [ended, setEnded] = useState(false);
   const [correct, setCorrect] = useState([]);
   const [input, setInput] = useState("");
-  const [duration, setDuration] = useState("infinite"); // null creates error
+  const [duration, setDuration] = useState("infinite");
 
-const handleGuess = (e, overrideGuess) => {
-  if(e && typeof e.preventDefault === "function") e.preventDefault();
-  if (!selectedTeam) return;
+  const handleGuess = (e, overrideGuess) => {
+    if (e?.preventDefault) e.preventDefault();
+    if (!selectedTeam) return;
 
-  //in case of stale input
-  const guess = (overrideGuess ?? input).trim().toLowerCase();
-  if (!guess) return;
+    const guess = (overrideGuess ?? input).trim().toLowerCase();
+    if (!guess) return;
 
-  const allPlayers =
-    selectedTeam === "all"
-      ? teams.flatMap((t) => t.players)
-      : selectedTeam.players || [];
+    const allPlayers =
+      selectedTeam === "all"
+        ? teams.flatMap((t) => t.players || [])
+        : selectedTeam?.players || [];
 
-  const matches = allPlayers.filter((p) => {
-    const fullName = p.playerName.trim().toLowerCase();
-    const parts = p.playerName.trim().split(" ");
-    const lastName = parts[parts.length - 1].toLowerCase();
-    return fullName === guess || lastName === guess;
-  });
+    const matches = allPlayers.filter((p) => {
+      const fullName = p.playerName.trim().toLowerCase();
+      const parts = p.playerName.trim().split(" ");
+      const lastName = parts[parts.length - 1].toLowerCase();
+      return fullName === guess || lastName === guess;
+    });
 
-  if (matches.length > 0) {
-    const newCorrect = [
-      ...new Set([
-        ...correct,
-        ...matches.map((p) => p.playerName),
-      ]),
-    ];
-    setCorrect(newCorrect);
-  }
-  setInput("");
-};
-
-  if (!started && !selectedTeam) {
-    return (
-      <div className="App">
-        <StartScreen
-          teams={teams}
-          setSelectedTeam={setSelectedTeam}
-          startQuiz={() => setStarted(true)}
-          setDuration={setDuration}
-        />
-      </div>
-    );
-  }
-
-  if (ended) {
-    return (
-      <div className="App">
-        <ResultsScreen team={selectedTeam} correct={correct} teams={teams} />
-      </div>
-    );
-  }
+    if (matches.length > 0) {
+      const newCorrect = [
+        ...new Set([...correct, ...matches.map((p) => p.playerName)]),
+      ];
+      setCorrect(newCorrect);
+    }
+    setInput("");
+  };
 
   return (
     <div className="App">
+      {selectedTeam && !ended && (
       <Quiz
         selectedTeam={selectedTeam}
         correct={correct}
@@ -79,9 +55,27 @@ const handleGuess = (e, overrideGuess) => {
         duration={duration}
         teams={teams}
       />
+      )}
+        {!started && (
+        <>
+        <StartScreen
+          teams={teams}
+          setSelectedTeam={setSelectedTeam}
+          startQuiz={() => setStarted(true)}
+          setDuration={setDuration}
+        />
+        </>
+      )}
+
+
+
+      {ended && (
+        <ResultsScreen team={selectedTeam} correct={correct} teams={teams} />
+      )}
     </div>
   );
 }
 
 export default App;
+
 

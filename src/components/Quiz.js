@@ -12,19 +12,19 @@ export default function Quiz({
   handleGuess,
   setEnded,
   duration,
-  teams
+  teams,
 }) {
   const [paused, setPaused] = useState(false);
   const [stopped, setStopped] = useState(false);
 
   const players =
-    selectedTeam ==="all"
-    ? teams.flatMap((t) => t.players)
-    : selectedTeam.players;
+    selectedTeam === "all"
+      ? teams.flatMap((t) => t.players || [])
+      : selectedTeam?.players || [];
 
   const totalPlayers = players.length;
 
-  // stops timer when all names guessed
+  // Stops timer when all names guessed
   useEffect(() => {
     if (correct.length === totalPlayers) {
       setStopped(true);
@@ -33,45 +33,44 @@ export default function Quiz({
 
   return (
     <div className="quiz">
-        <div className="quiz-header">
-            <div className="column input-box">
-                <AnswerInput
-                input={input}
-                setInput={setInput}
-                handleGuess={handleGuess}
-                disabled={stopped}
-                players={players}
-                resumeTimer={() => setPaused(false)}
-                />
-            </div>
+      <div className="quiz-header">
+        <div className="column input-box">
+          <AnswerInput
+            input={input}
+            setInput={setInput}
+            handleGuess={handleGuess}
+            disabled={stopped}
+            players={players}
+            resumeTimer={() => setPaused(false)}
+          />
+        </div>
 
         <div className="column score-box">
-            <Score correct={correct.length} total={totalPlayers} />
-         </div>
+          <Score correct={correct.length} total={totalPlayers} />
+        </div>
 
         <div className="column timer-box">
-            Timer: 
-            <Timer
-                duration={duration}
-                onTimeEnd={() => setEnded(true)}
-                paused={paused}
-                stopped={stopped}
-            />
-            </div>
-
-            {!stopped && (
-                <div className="column pause-box">
-            <button className="pause-btn" onClick={() => setPaused(!paused)}>
-            {paused ? "►" : " ⏸"}
-            </button>
-            </div>
-            )}
-
+          Timer:
+          <Timer
+            duration={duration}
+            onTimeEnd={() => setEnded(true)}
+            paused={paused}
+            stopped={stopped}
+          />
         </div>
+
+        {!stopped && (
+          <div className="column pause-box">
+            <button className="pause-btn" onClick={() => setPaused(!paused)}>
+              {paused ? "►" : "⏸"}
+            </button>
+          </div>
+        )}
+      </div>
 
       <RosterGrid
         teams={teams}
-        selectedTeam={selectedTeam}
+        selectedTeam={selectedTeam || "all"}
         correct={correct}
       />
     </div>
