@@ -8,7 +8,6 @@ import ResultsScreen from "./components/ResultsScreen";
 
 function App() {
   const [selectedTeam, setSelectedTeam] = useState(null);
-  const [started, setStarted] = useState(false);
   const [ended, setEnded] = useState(false);
   const [correct, setCorrect] = useState([]);
   const [input, setInput] = useState("");
@@ -34,48 +33,38 @@ function App() {
     });
 
     if (matches.length > 0) {
-      const newCorrect = [
-        ...new Set([...correct, ...matches.map((p) => p.playerName)]),
-      ];
-      setCorrect(newCorrect);
+      setCorrect([...new Set([...correct, ...matches.map((p) => p.playerName)])]);
     }
     setInput("");
   };
 
-  const handleStartQuiz = (team) => {
-    setSelectedTeam(team);
-    setStarted(true);
-  };
-
   return (
     <div className="App">
-      {started && selectedTeam && !ended && (
-        <Quiz
-          selectedTeam={selectedTeam}
-          correct={correct}
-          input={input}
-          setInput={setInput}
-          handleGuess={handleGuess}
-          setEnded={setEnded}
-          duration={duration}
+      {selectedTeam && !ended && (
+      <Quiz
+        selectedTeam={selectedTeam}
+        correct={correct}
+        setCorrect={setCorrect}
+        input={input}
+        setInput={setInput}
+        handleGuess={handleGuess}
+        setEnded={setEnded}
+        duration={duration}
+        teams={teams}
+      />
+      )}
+
+      {/* Show start screen modal if team not selected */}
+      {!selectedTeam && (
+        <StartScreen
           teams={teams}
+          startQuiz={team => setSelectedTeam(team)}
+          setDuration={setDuration}
         />
       )}
 
-      {!started && (
-      <StartScreen
-        teams={teams}
-        startQuiz={(team) => {
-        setSelectedTeam(team);
-        setStarted(true);
-      }}
-      setDuration={setDuration}
-      started={started}
-      />
-
-      )}
-
-      {ended && (
+      {/* Show results when ended */}
+      {ended && selectedTeam && (
         <ResultsScreen team={selectedTeam} correct={correct} teams={teams} />
       )}
     </div>
@@ -83,6 +72,8 @@ function App() {
 }
 
 export default App;
+
+
 
 
 

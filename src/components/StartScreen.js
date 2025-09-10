@@ -1,11 +1,22 @@
 import React, { useState, useEffect } from "react";
 import './StartScreen.css';
 
-export default function StartScreen({ teams, startQuiz, setDuration, started }) {
-  const [customMinutes, setCustomMinutes] = useState("");
+export default function StartScreen({ teams, startQuiz, setDuration }) {
   const [selectedTeamValue, setSelectedTeamValue] = useState("");
+  const [customMinutes, setCustomMinutes] = useState("");
 
-  const uniqueTeams = Array.from(new Set(teams.map(team => team.team)));
+  const uniqueTeams = Array.from(new Set(teams.map(t => t.team)));
+
+    useEffect(() => {
+    if (selectedTeamValue && (customMinutes || customMinutes === "")) {
+        const teamObj = selectedTeamValue === "all"
+        ? "all"
+        : teams.find(t => t.team === selectedTeamValue);
+
+        startQuiz(teamObj);
+    }
+    }, [selectedTeamValue, customMinutes]);
+
 
   const handleCustomChange = (e) => {
     const minutes = e.target.value;
@@ -15,18 +26,11 @@ export default function StartScreen({ teams, startQuiz, setDuration, started }) 
     }
   };
 
-  useEffect(() => {
-    if (selectedTeamValue) {
-      const teamObj = selectedTeamValue === "all"
-        ? "all"
-        : teams.find((t) => t.team === selectedTeamValue);
-
-      startQuiz(teamObj);
-    }
-  }, [selectedTeamValue, startQuiz, teams]);
 
   return (
-    <div className={`start-screen ${started ? "hidden" : ""}`}>
+    <>
+    <div className="start-screen-overlay"/>
+        <div className="start-screen">
       <h1>NBA Roster Quiz</h1>
        <p>Select your time before your team!</p>
         <p>Timer (minutes):</p>
@@ -52,6 +56,7 @@ export default function StartScreen({ teams, startQuiz, setDuration, started }) 
 
 
     </div>
+    </>
   );
 }
 

@@ -64,6 +64,7 @@
   background: #1D428a;
   color: white;
   flex: 0 0 auto;
+  font-weight:bold;
   border: none;  border-radius: 6px;
   
 }
@@ -92,4 +93,21 @@
 }
 .pause-btn:hover {
   background: #517ac8;
+}
+
+.give-up-btn {
+  font-size: 0.9rem;
+  font:"Helvetica";
+  font-weight:bold;
+  background: #1D428a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.give-up-btn:hover {
+  background: #517ac8;
+
 }

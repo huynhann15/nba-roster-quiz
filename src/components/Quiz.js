@@ -7,6 +7,7 @@ import RosterGrid from "./RosterGrid";
 export default function Quiz({
   selectedTeam,
   correct,
+  setCorrect,
   input,
   setInput,
   handleGuess,
@@ -66,6 +67,31 @@ export default function Quiz({
             </button>
           </div>
         )}
+
+        {!stopped && (
+            <div className="column give-up-box">
+            <button
+      className="give-up-btn"
+      onClick={() => {
+        // Get all players for this team
+        const allPlayers =
+          selectedTeam === "all"
+            ? teams.flatMap((t) => t.players || [])
+            : selectedTeam?.players || [];
+
+        // Mark all as correct
+        setCorrect(allPlayers.map(p => p.playerName));
+
+        // End the quiz
+        setEnded(true);
+      }}
+    >
+      Give Up
+    </button>
+  </div>
+)}
+
+
       </div>
 
       <RosterGrid
