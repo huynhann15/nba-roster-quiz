@@ -37,6 +37,7 @@ export default function StartScreen({ teams, startQuiz, setDuration, started }) 
         min="1"
       />
       <button onClick={() => setDuration("infinite")}>∞</button>
+      <p>(click the infinity button for unlimited time)</p>
       <p>Select a team:</p>
       <select
         onChange={(e) => setSelectedTeamValue(e.target.value)}

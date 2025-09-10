@@ -75,11 +75,18 @@
 }
 
 
-.roster-grid-container.single-team h2 {
-  margin-bottom: 10px;
+.roster-grid-container.single-team {
+  width: 100%;   
+  height: auto;
+  background-size: cover;
+  background-position: center;
 }
 
 .roster-grid-container.single-team .roster-grid {
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+  width: 100%;
+  box-sizing: border-box;
 }
+
