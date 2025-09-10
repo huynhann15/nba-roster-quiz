@@ -42,32 +42,38 @@ function App() {
     setInput("");
   };
 
+  const handleStartQuiz = (team) => {
+    setSelectedTeam(team);
+    setStarted(true);
+  };
+
   return (
     <div className="App">
-      {selectedTeam && !ended && (
-      <Quiz
-        selectedTeam={selectedTeam}
-        correct={correct}
-        input={input}
-        setInput={setInput}
-        handleGuess={handleGuess}
-        setEnded={setEnded}
-        duration={duration}
-        teams={teams}
-      />
-      )}
-        {!started && (
-        <>
-        <StartScreen
+      {started && selectedTeam && !ended && (
+        <Quiz
+          selectedTeam={selectedTeam}
+          correct={correct}
+          input={input}
+          setInput={setInput}
+          handleGuess={handleGuess}
+          setEnded={setEnded}
+          duration={duration}
           teams={teams}
-          setSelectedTeam={setSelectedTeam}
-          startQuiz={() => setStarted(true)}
-          setDuration={setDuration}
         />
-        </>
       )}
 
+      {!started && (
+      <StartScreen
+        teams={teams}
+        startQuiz={(team) => {
+        setSelectedTeam(team);
+        setStarted(true);
+      }}
+      setDuration={setDuration}
+      started={started}
+      />
 
+      )}
 
       {ended && (
         <ResultsScreen team={selectedTeam} correct={correct} teams={teams} />
@@ -77,5 +83,6 @@ function App() {
 }
 
 export default App;
+
 
 

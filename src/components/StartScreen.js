@@ -1,44 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './StartScreen.css';
 
-export default function StartScreen({
-  teams,
-  setSelectedTeam,
-  startQuiz,
-  setDuration
-}) {
+export default function StartScreen({ teams, startQuiz, setDuration, started }) {
   const [customMinutes, setCustomMinutes] = useState("");
+  const [selectedTeamValue, setSelectedTeamValue] = useState("");
 
-  // Get unique team names
   const uniqueTeams = Array.from(new Set(teams.map(team => team.team)));
 
   const handleCustomChange = (e) => {
     const minutes = e.target.value;
     setCustomMinutes(minutes);
     if (minutes && Number(minutes) > 0) {
-      setDuration(Number(minutes) * 60 * 1000); // convert minutes to ms
+      setDuration(Number(minutes) * 60 * 1000);
     }
   };
 
-  const handleStart = () => {
-    startQuiz();
-  };
+  useEffect(() => {
+    if (selectedTeamValue) {
+      const teamObj = selectedTeamValue === "all"
+        ? "all"
+        : teams.find((t) => t.team === selectedTeamValue);
+
+      startQuiz(teamObj);
+    }
+  }, [selectedTeamValue, startQuiz, teams]);
 
   return (
-    <div className="model-overlay">
-    <div className="start-screen">
+    <div className={`start-screen ${started ? "hidden" : ""}`}>
       <h1>NBA Roster Quiz</h1>
-
+       <p>Select your time before your team!</p>
+        <p>Timer (minutes):</p>
+      <input
+        type="number"
+        value={customMinutes}
+        onChange={handleCustomChange}
+        min="1"
+      />
+      <button onClick={() => setDuration("infinite")}>∞</button>
       <p>Select a team:</p>
       <select
-        onChange={(e) => {
-          const value = e.target.value;
-          if (value === "all") {
-            setSelectedTeam("all");
-          } else {
-            setSelectedTeam(teams.find((t) => t.team === value));
-          }
-        }}
+        onChange={(e) => setSelectedTeamValue(e.target.value)}
         defaultValue=""
       >
         <option value="" disabled>-- Choose a team --</option>
@@ -48,20 +49,7 @@ export default function StartScreen({
         ))}
       </select>
 
-      <p>Timer:</p>
-      <input
-        type="number"
-        value={customMinutes}
-        onChange={handleCustomChange}
-        min="1"
-      />
-      <button onClick={() => setDuration("infinite")}>∞</button>
 
-      <br /><br />
-      <button onClick={handleStart} disabled={!teams}>
-        Start
-      </button>
-    </div>
     </div>
   );
 }
