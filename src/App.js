@@ -33,32 +33,34 @@ function App() {
     });
 
     if (matches.length > 0) {
-      setCorrect([...new Set([...correct, ...matches.map((p) => p.playerName)])]);
+      setCorrect([
+        ...new Set([...correct, ...matches.map((p) => p.playerName)]),
+      ]);
     }
     setInput("");
   };
 
   return (
     <div className="App">
-      {selectedTeam && !ended && (
-      <Quiz
-        selectedTeam={selectedTeam}
-        correct={correct}
-        setCorrect={setCorrect}
-        input={input}
-        setInput={setInput}
-        handleGuess={handleGuess}
-        setEnded={setEnded}
-        duration={duration}
-        teams={teams}
-      />
-      )}
-
       {!selectedTeam && (
         <StartScreen
           teams={teams}
-          startQuiz={team => setSelectedTeam(team)}
+          setSelectedTeam={setSelectedTeam}
           setDuration={setDuration}
+        />
+      )}
+
+      {selectedTeam && !ended && (
+        <Quiz
+          selectedTeam={selectedTeam}
+          correct={correct}
+          setCorrect={setCorrect}
+          input={input}
+          setInput={setInput}
+          handleGuess={handleGuess}
+          setEnded={setEnded}
+          duration={duration}
+          teams={teams}
         />
       )}
 

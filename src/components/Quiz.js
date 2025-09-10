@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Timer } from "./Timer";
+import Timer from "./Timer";
 import Score from "./Score";
 import AnswerInput from "./AnswerInput";
 import RosterGrid from "./RosterGrid";
@@ -25,12 +25,34 @@ export default function Quiz({
 
   const totalPlayers = players.length;
 
-  // Stops timer when all names guessed
+  // stops auto when all players are guessed
   useEffect(() => {
     if (correct.length === totalPlayers) {
       setStopped(true);
     }
   }, [correct, totalPlayers]);
+
+  const handleGiveUp = () => {
+    const allPlayers =
+      selectedTeam === "all"
+        ? teams.flatMap((t) => t.players || [])
+        : selectedTeam?.players || [];
+
+    if (!allPlayers.length) return;
+
+    setCorrect(allPlayers.map((p) => p.playerName));
+    setEnded(true);
+    setStopped(true);
+  };
+
+  const rosterTeam =
+    selectedTeam === "all"
+      ? "all"
+      : typeof selectedTeam === "object"
+      ? selectedTeam
+      : teams.find((t) => t.team === selectedTeam) || null;
+
+  if (!rosterTeam) return null; // safety check
 
   return (
     <div className="quiz">
@@ -69,34 +91,17 @@ export default function Quiz({
         )}
 
         {!stopped && (
-            <div className="column give-up-box">
-            <button
-      className="give-up-btn"
-      onClick={() => {
-        // Get all players for this team
-        const allPlayers =
-          selectedTeam === "all"
-            ? teams.flatMap((t) => t.players || [])
-            : selectedTeam?.players || [];
-
-        // Mark all as correct
-        setCorrect(allPlayers.map(p => p.playerName));
-
-        // End the quiz
-        setEnded(true);
-      }}
-    >
-      Give Up
-    </button>
-  </div>
-)}
-
-
+          <div className="column give-up-box">
+            <button className="give-up-btn" onClick={handleGiveUp}>
+              Give Up?
+            </button>
+          </div>
+        )}
       </div>
 
       <RosterGrid
         teams={teams}
-        selectedTeam={selectedTeam || "all"}
+        selectedTeam={rosterTeam}
         correct={correct}
       />
     </div>

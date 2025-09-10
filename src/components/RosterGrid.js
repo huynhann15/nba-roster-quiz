@@ -3,26 +3,33 @@ import "./RosterGrid.css";
 
 export default function RosterGrid({ correct, teams, selectedTeam }) {
   let teamsToDisplay = [];
-  let isAllTeams = selectedTeam === "all";
+  const isAllTeams = selectedTeam === "all";
 
   if (isAllTeams) {
     teamsToDisplay = teams;
-  } else if (selectedTeam) {
-    teamsToDisplay =
-      typeof selectedTeam === "object"
-        ? [selectedTeam]
-        : teams.filter((t) => t.team === selectedTeam);
+  } else if (selectedTeam && typeof selectedTeam === "object") {
+    teamsToDisplay = [selectedTeam];
+  } else {
+    teamsToDisplay = []; // fallback so nothing breaks
   }
 
+  if (!teamsToDisplay.length) return null;
+
   return (
-    <div className={`roster-grid-container ${isAllTeams ? "all-teams" : "single-team"}`}>
+    <div
+      className={`roster-grid-container ${
+        isAllTeams ? "all-teams" : "single-team"
+      }`}
+    >
       {teamsToDisplay.map((teamObj) => (
         <div key={teamObj.team} className={isAllTeams ? "team-card" : ""}>
           {!isAllTeams && <h2>{teamObj.team}</h2>}
           {isAllTeams && <div className="team-name">{teamObj.team}</div>}
+
           <div className="roster-grid">
             {teamObj.players?.map((player) => {
               const guessed = correct.includes(player.playerName);
+
               return (
                 <div
                   key={player.playerId}
@@ -57,6 +64,8 @@ export default function RosterGrid({ correct, teams, selectedTeam }) {
     </div>
   );
 }
+
+
 
 
 

@@ -1,0 +1,63 @@
+.results-screen {
+  padding: 20px;
+  text-align: center;
+}
+
+.results-screen h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.results-screen h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.results-screen p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+  justify-items: center;
+  align-items: start;
+}
+
+.player-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  border-radius: 6px;
+  background-color: #f0f0f0;
+  text-align: center;
+  width: 100%;
+  max-width: 120px;
+}
+
+.player-card img.player-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 5px;
+}
+
+.player-card .player-name {
+  font-size: 0.8rem;
+  font-weight: bold;
+  word-break: break-word;
+}
+
+.player-card .missed-label {
+  font-size: 0.7rem;
+  color: red;
+  margin-top: 2px;
+}
+
+.player-card.revealed {
+  background-color: #d4edda;
+}

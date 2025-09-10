@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from "react";
-import './StartScreen.css';
+import "./StartScreen.css";
 
-export default function StartScreen({ teams, startQuiz, setDuration }) {
+export default function StartScreen({ teams, setSelectedTeam, setDuration }) {
   const [selectedTeamValue, setSelectedTeamValue] = useState("");
   const [customMinutes, setCustomMinutes] = useState("");
 
-  const uniqueTeams = Array.from(new Set(teams.map(t => t.team)));
+  const uniqueTeams = Array.from(new Set(teams.map((t) => t.team)));
 
-    useEffect(() => {
-    if (selectedTeamValue && (customMinutes || customMinutes === "")) {
-        const teamObj = selectedTeamValue === "all"
-        ? "all"
-        : teams.find(t => t.team === selectedTeamValue);
+  useEffect(() => {
+    if (!selectedTeamValue) return;
 
-        startQuiz(teamObj);
+    if (selectedTeamValue === "all") {
+      setSelectedTeam("all");
+    } else {
+      const teamObj = teams.find((t) => t.team === selectedTeamValue);
+      setSelectedTeam(teamObj);
     }
-    }, [selectedTeamValue, customMinutes]);
-
+  }, [selectedTeamValue, teams, setSelectedTeam]);
 
   const handleCustomChange = (e) => {
     const minutes = e.target.value;
@@ -26,14 +26,11 @@ export default function StartScreen({ teams, startQuiz, setDuration }) {
     }
   };
 
-
   return (
-    <>
-    <div className="start-screen-overlay"/>
-        <div className="start-screen">
+    <div className="start-screen">
       <h1>NBA Roster Quiz</h1>
-       <p>Select your time before your team!</p>
-        <p>Timer (minutes):</p>
+
+      <p>Timer (minutes):</p>
       <input
         type="number"
         value={customMinutes}
@@ -41,22 +38,24 @@ export default function StartScreen({ teams, startQuiz, setDuration }) {
         min="1"
       />
       <button onClick={() => setDuration("infinite")}>∞</button>
-      <p>(click the infinity button for unlimited time)</p>
+      <p>(Click the infinity button for unlimited time)</p>
+
       <p>Select a team:</p>
       <select
         onChange={(e) => setSelectedTeamValue(e.target.value)}
         defaultValue=""
       >
-        <option value="" disabled>-- Choose a team --</option>
+        <option value="" disabled>
+          -- Choose a team --
+        </option>
         <option value="all">All Teams</option>
-        {uniqueTeams.map(teamName => (
-          <option key={teamName} value={teamName}>{teamName}</option>
+        {uniqueTeams.map((teamName) => (
+          <option key={teamName} value={teamName}>
+            {teamName}
+          </option>
         ))}
       </select>
-
-
     </div>
-    </>
   );
 }
 
