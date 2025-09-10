@@ -1,7 +1,7 @@
 import React from "react";
 import "./RosterGrid.css";
 
-export default function RosterGrid({ correct, teams, selectedTeam }) {
+export default function RosterGrid({ correct, teams, selectedTeam, revealedAll }) {
   let teamsToDisplay = [];
   const isAllTeams = selectedTeam === "all";
 
@@ -10,7 +10,7 @@ export default function RosterGrid({ correct, teams, selectedTeam }) {
   } else if (selectedTeam && typeof selectedTeam === "object") {
     teamsToDisplay = [selectedTeam];
   } else {
-    teamsToDisplay = []; // fallback so nothing breaks
+    teamsToDisplay = [];
   }
 
   if (!teamsToDisplay.length) return null;
@@ -29,13 +29,16 @@ export default function RosterGrid({ correct, teams, selectedTeam }) {
           <div className="roster-grid">
             {teamObj.players?.map((player) => {
               const guessed = correct.includes(player.playerName);
+              const showPlayer = guessed || revealedAll;
 
               return (
                 <div
                   key={player.playerId}
-                  className={`player-card ${guessed ? "revealed" : ""}`}
+                  className={`player-card ${guessed ? "revealed" : ""} ${
+                    revealedAll && !guessed ? "missed" : ""
+                  }`}
                 >
-                  {guessed ? (
+                  {showPlayer ? (
                     <>
                       {player.image && (
                         <img
@@ -45,6 +48,9 @@ export default function RosterGrid({ correct, teams, selectedTeam }) {
                         />
                       )}
                       <p className="player-name">{player.playerName}</p>
+                      {revealedAll && !guessed && (
+                        <p className="missed-label">Missed</p>
+                      )}
                     </>
                   ) : (
                     <div className="placeholder">

@@ -17,6 +17,7 @@ export default function Quiz({
 }) {
   const [paused, setPaused] = useState(false);
   const [stopped, setStopped] = useState(false);
+  const [revealedAll, setRevealedAll] = useState(false);
 
   const players =
     selectedTeam === "all"
@@ -25,7 +26,7 @@ export default function Quiz({
 
   const totalPlayers = players.length;
 
-  // stops auto when all players are guessed
+  // stop quiz automatically when all players guessed
   useEffect(() => {
     if (correct.length === totalPlayers) {
       setStopped(true);
@@ -33,26 +34,10 @@ export default function Quiz({
   }, [correct, totalPlayers]);
 
   const handleGiveUp = () => {
-    const allPlayers =
-      selectedTeam === "all"
-        ? teams.flatMap((t) => t.players || [])
-        : selectedTeam?.players || [];
-
-    if (!allPlayers.length) return;
-
-    setCorrect(allPlayers.map((p) => p.playerName));
+    setRevealedAll(true); // mark all players as revealed
     setEnded(true);
     setStopped(true);
   };
-
-  const rosterTeam =
-    selectedTeam === "all"
-      ? "all"
-      : typeof selectedTeam === "object"
-      ? selectedTeam
-      : teams.find((t) => t.team === selectedTeam) || null;
-
-  if (!rosterTeam) return null; // safety check
 
   return (
     <div className="quiz">
@@ -101,10 +86,18 @@ export default function Quiz({
 
       <RosterGrid
         teams={teams}
-        selectedTeam={rosterTeam}
+        selectedTeam={
+          selectedTeam === "all"
+            ? "all"
+            : typeof selectedTeam === "object"
+            ? selectedTeam
+            : teams.find((t) => t.team === selectedTeam) || null
+        }
         correct={correct}
+        revealedAll={revealedAll}
       />
     </div>
   );
 }
+
 

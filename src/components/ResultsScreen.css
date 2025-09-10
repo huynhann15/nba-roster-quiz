@@ -1,6 +1,9 @@
 .results-screen {
   padding: 20px;
   text-align: center;
+  background: no-repeat center url("background.jpg");
+  background-size: cover;
+  min-height: 100vh;
 }
 
 .results-screen h1 {
