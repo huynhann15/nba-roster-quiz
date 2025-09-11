@@ -14,7 +14,7 @@ export default function RosterGrid({ correct, teams, selectedTeam, revealedAll }
   }
 
   if (!teamsToDisplay.length) return null;
-
+  
   return (
     <div
       className={`roster-grid-container ${
@@ -54,11 +54,12 @@ export default function RosterGrid({ correct, teams, selectedTeam, revealedAll }
                     </>
                   ) : (
                     <div className="placeholder">
-                      <img
-                        src="/assets/placeholder.png"
+                    <img
+                        src={`${process.env.PUBLIC_URL}/assets/placeholder.png`}
                         alt="placeholder"
                         className="placeholder-image"
-                      />
+                    />
+
                     </div>
                   )}
                 </div>
