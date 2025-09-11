@@ -55,7 +55,7 @@ export default function RosterGrid({ correct, teams, selectedTeam, revealedAll }
                   ) : (
                     <div className="placeholder">
                       <img
-                        src="/components/placeholderbasketball.png"
+                        src="/assets/placeholder.png"
                         alt="placeholder"
                         className="placeholder-image"
                       />
