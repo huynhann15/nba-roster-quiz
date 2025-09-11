@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/nba-roster-quiz/static/css/main.95eec883.css",
-    "main.js": "/nba-roster-quiz/static/js/main.85a27a64.js",
+    "main.css": "/nba-roster-quiz/static/css/main.7e512166.css",
+    "main.js": "/nba-roster-quiz/static/js/main.75b5b43d.js",
     "static/js/453.2eb1fd50.chunk.js": "/nba-roster-quiz/static/js/453.2eb1fd50.chunk.js",
     "static/media/background.jpg": "/nba-roster-quiz/static/media/background.99d509d8f90d526cb04a.jpg",
     "index.html": "/nba-roster-quiz/index.html",
-    "main.95eec883.css.map": "/nba-roster-quiz/static/css/main.95eec883.css.map",
-    "main.85a27a64.js.map": "/nba-roster-quiz/static/js/main.85a27a64.js.map",
+    "main.7e512166.css.map": "/nba-roster-quiz/static/css/main.7e512166.css.map",
+    "main.75b5b43d.js.map": "/nba-roster-quiz/static/js/main.75b5b43d.js.map",
     "453.2eb1fd50.chunk.js.map": "/nba-roster-quiz/static/js/453.2eb1fd50.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.95eec883.css",
-    "static/js/main.85a27a64.js"
+    "static/css/main.7e512166.css",
+    "static/js/main.75b5b43d.js"
   ]
 }
