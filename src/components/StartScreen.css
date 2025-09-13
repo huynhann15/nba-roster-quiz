@@ -33,9 +33,3 @@ body {
 .start-screen .team-card:hover {
   background: #4872c6;
 }
-
-.start-screen .team-card.selected {
-  border-color: #FDB927;
-  background-color: #FFF5CC;
-  color: #1D428a;
-}
