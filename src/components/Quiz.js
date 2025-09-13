@@ -48,8 +48,9 @@ export default function Quiz({
   useEffect(() => {
     if (correct.length === totalPlayers) {
       setStopped(true);
+      setEnded(true);
     }
-  }, [correct, totalPlayers]);
+  }, [correct, totalPlayers,setEnded]);
 
   const handleGiveUp = () => {
     setRevealedAll(true); // mark all players as revealed
