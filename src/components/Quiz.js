@@ -19,6 +19,23 @@ export default function Quiz({
   const [paused, setPaused] = useState(false);
   const [stopped, setStopped] = useState(false);
   const [revealedAll, setRevealedAll] = useState(false);
+  const [guessedNames, setGuessedNames] = useState([]);
+
+    const handleGuessWithTracking = (e, name) => {
+    const normalized = name.trim().toLowerCase();
+    const lastName = name.split(" ").slice(-1)[0].toLowerCase();
+
+    // Prevent submitting the same name or last name again
+    if (guessedNames.includes(normalized) || guessedNames.includes(lastName)) {
+      return;
+    }
+
+    // Track full name + last name to avoid duplicate auto-submissions
+    setGuessedNames((prev) => [...prev, normalized, lastName]);
+
+    // Call original handler
+    handleGuess(e, name);
+  };
 
   const players =
     selectedTeam === "all"
@@ -47,7 +64,8 @@ export default function Quiz({
           <AnswerInput
             input={input}
             setInput={setInput}
-            handleGuess={handleGuess}
+            handleGuess={handleGuessWithTracking}
+            guessedNames={guessedNames}
             disabled={stopped}
             players={players}
             resumeTimer={() => setPaused(false)}
