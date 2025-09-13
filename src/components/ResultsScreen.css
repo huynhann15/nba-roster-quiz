@@ -30,6 +30,8 @@
 }
 
 .player-card {
+  width: 120px;
+  height: 140px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,6 +41,7 @@
   text-align: center;
   width: 100%;
   max-width: 120px;
+  box-sizing: border-box;
 }
 
 .player-card img.player-image {
@@ -56,12 +59,15 @@
   font-family:"Helvetica";
 }
 
+.player-card.missed {
+  background-color: #f8d7da;
+}
 
 .player-card .missed-label {
   font-size: 0.8rem;
   font-family:"Helvetica";
   font-weight: bold;
-  color: red;
+  color: rgb(200, 4, 4);
   margin-top: 2px;
 }
 

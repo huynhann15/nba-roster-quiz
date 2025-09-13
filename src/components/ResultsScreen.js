@@ -35,7 +35,7 @@ export default function ResultsScreen({ team, correct, teams, elapsedTime }) {
           return (
             <div
               key={player.playerId}
-              className={`player-card ${guessed ? "revealed" : ""}`}
+              className={`player-card ${guessed ? "revealed" : "missed"}`}
             >
               {player.image && (
                 <img
