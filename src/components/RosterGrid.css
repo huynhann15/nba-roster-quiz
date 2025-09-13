@@ -32,8 +32,8 @@
 
 .roster-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-  gap: 6px;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 4px;
 }
 
 .player-card {
@@ -48,7 +48,13 @@
 }
 
 .player-card img.player-image {
-  width: 100%;
+  width: 80%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.player-card.revealed img.player-image {
+  width: 90%;
   height: auto;
   border-radius: 50%;
 }
@@ -64,9 +70,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 60px;
-  width: 60px;
-  
+  height: 50px;
+  width: 50px;
+  margin: 5px;
 
 }
 
@@ -95,5 +101,65 @@
   box-sizing: border-box;
 }
 
+/*for mobile*/
+@media (max-width: 768px) {
+.roster-grid-container.all-teams {
+  display: grid;
+  /* change to row display for teams */
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
 
+
+  .team-card {
+    padding: 4px;
+    font-size: 0.85rem;
+  }
+
+  .team-name {
+    font-size: 0.85rem;
+  }
+
+  .roster-grid-container.single-team .roster-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 6px;
+  }
+
+  .player-card .player-name {
+    font-size: 0.6rem;
+  }
+
+  .player-card {
+    padding: 2px;
+  }
+
+  .player-card img.player-image {
+    width: 48px;
+    height:48px;
+    object-fit:cover;
+  }
+    .player-card .player-name {
+    font-size: 0.6rem;
+    margin-top: 2px;
+  }
+
+  .player-card .placeholder {
+    height: 50px;
+    width: 50px;
+  }
+
+  .player-card .placeholder-image {
+    width: 32px;
+    height: 32px;
+  }
+
+  .player-card.revealed img.player-image {
+  width: 90%;
+  height: auto;
+  border-radius: 50%;
+    }
+}
 
