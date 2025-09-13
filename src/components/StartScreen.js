@@ -26,6 +26,10 @@ export default function StartScreen({ teams, setSelectedTeam, setDuration }) {
     }
   };
 
+  const handleTeamClick = (teamName) => {
+    setSelectedTeamValue(teamName);
+  };
+
   return (
     <div className="start-screen">
       <h1>NBA Roster Quiz</h1>
@@ -43,21 +47,25 @@ export default function StartScreen({ teams, setSelectedTeam, setDuration }) {
       <p>(Click the infinity button for unlimited time)</p>
 
       <p>Select a team:</p>
-      <select
-        onChange={(e) => setSelectedTeamValue(e.target.value)}
-        defaultValue=""
-      >
-        <option value="" disabled>
-          -- Choose a team --
-        </option>
-        <option value="all">All Teams</option>
+      <div className="team-grid">
+        <div
+          className={`team-card ${selectedTeamValue === "all" ? "selected" : ""}`}
+          onClick={() => handleTeamClick("all")}
+        >
+          All Teams
+        </div>
         {uniqueTeams.map((teamName) => (
-          <option key={teamName} value={teamName}>
+          <div
+            key={teamName}
+            className={`team-card ${selectedTeamValue === teamName ? "selected" : ""}`}
+            onClick={() => handleTeamClick(teamName)}
+          >
             {teamName}
-          </option>
+          </div>
         ))}
-      </select>
+      </div>
     </div>
   );
 }
+
 

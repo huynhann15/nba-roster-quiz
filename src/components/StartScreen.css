@@ -1,22 +1,41 @@
-.start-screen-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.3);
-  pointer-events: none; /* allow clicks to pass through */
-  z-index: 1000;
+body {
+  margin: 0;
+  padding: 0;
+  background: no-repeat center url("background.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: Helvetica;
 }
 
+/* Scoped to start screen only */
+.start-screen .team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  max-height: 300px;
+  overflow-y: auto;
+}
 
-.start-screen {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.start-screen .team-card {
   background: #1D428a;
   color: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  z-index: 1001; /* above overlay */
+  padding: 12px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
+.start-screen .team-card:hover {
+  background: #4872c6;
+}
+
+.start-screen .team-card.selected {
+  border-color: #FDB927;
+  background-color: #FFF5CC;
+  color: #1D428a;
+}
