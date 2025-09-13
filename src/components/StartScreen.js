@@ -32,7 +32,6 @@ export default function StartScreen({ teams, setSelectedTeam, setDuration }) {
       <p>Name all NBA players in the league or selected team</p>
       <p>This is for the 2024-2025 roster!</p>
       <p>Select your time before selecting your team! If you only select a team, it will automatically start the unlimited timer.</p>
-
       <p>Timer (minutes):</p>
       <input
         type="number"
