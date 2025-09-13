@@ -29,6 +29,7 @@ export default function StartScreen({ teams, setSelectedTeam, setDuration }) {
   return (
     <div className="start-screen">
       <h1>NBA Roster Quiz</h1>
+      <p>Name all NBA players in the league or selected team</p>
       <p>This is for the 2024-2025 roster!</p>
       <p>Select your time before selecting your team! If you only select a team, it will automatically start the unlimited timer.</p>
 
