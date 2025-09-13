@@ -112,3 +112,27 @@
   background: #517ac8;
 
 }
+/* for mobile spelling help */
+@media (max-width: 600px) {
+  .input-w-helper {
+    flex-direction: row;
+    gap: 6px;
+    flex-wrap: nowrap;
+    align-items: center; 
+  }
+
+  .input-box input {
+    width: auto;
+    flex: 1 1 auto;       /* input grows to fill available space */
+    min-width: 0;         /* prevent overflow */
+    font-size: 0.85rem;
+    padding: 5px; 
+  }
+
+  .spelling-help-btn {
+    flex: 0 0 auto;
+    font-size: 0.85rem;
+    padding: 5px 8px;
+    white-space: nowrap;
+  }
+}

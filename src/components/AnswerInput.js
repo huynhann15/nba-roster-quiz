@@ -12,14 +12,14 @@ export default function AnswerInput({ input, setInput, handleGuess, disabled, pl
   );
 
   const handleChange = (e) => {
-    const val = e.target.value.trim();
+    const val = e.target.value;
     setInput(val);
 
     if (resumeTimer) {
       resumeTimer();
     }
-
-    const inputLower = val.toLowerCase();
+    //trim checking here to prevent spaces not being inputted
+    const inputLower = val.trim().toLowerCase();
 
     //blocking for duplicate exact matches
     const alreadyGuessed = guessedNames.some(
@@ -37,7 +37,7 @@ export default function AnswerInput({ input, setInput, handleGuess, disabled, pl
     });
 
     if (exactMatch) {
-      handleGuess({ preventDefault: () => {} }, val);
+      handleGuess({ preventDefault: () => {} }, val.trim());
     }
   };
 
