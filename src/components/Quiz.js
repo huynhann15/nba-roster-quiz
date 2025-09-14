@@ -24,7 +24,7 @@ export default function Quiz({
   const handleGuessWithTracking = (e, name) => {
     const normalized = name.trim().toLowerCase();
 
-    // Prevent submitting the same full name again
+    // prevent submitting the same full name again
     if (guessedNames.includes(normalized)) {
       return;
     }

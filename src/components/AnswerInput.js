@@ -1,4 +1,3 @@
-// AnswerInput.js
 import React, { useState, useMemo } from "react";
 import Fuse from "fuse.js";
 import './AnswerInput.css';
@@ -13,7 +12,7 @@ export default function AnswerInput({
   guessedNames,
 }) {
   const [showHelp, setShowHelp] = useState(false);
-
+  //fuse.js for spelling help
   const fuse = useMemo(
     () => new Fuse(players, { keys: ["playerName"], threshold: 0.4 }),
     [players]
@@ -28,14 +27,14 @@ export default function AnswerInput({
     const inputTrimmed = val.trim();
     const inputLower = inputTrimmed.toLowerCase();
 
-    // ✅ Match players by full name or last name
+    // match players by full name or last name
     const matchingPlayers = players.filter((p) => {
       const fullName = p.playerName.toLowerCase();
       const lastName = p.playerName.split(" ").pop().toLowerCase();
       return inputLower === fullName || inputLower === lastName;
     });
 
-    // ✅ Remove already-guessed players
+    // remove already-guessed players
     const unguessedMatches = matchingPlayers.filter((p) => {
       return !guessedNames.some(
         (guessed) => guessed.toLowerCase() === p.playerName.toLowerCase()
@@ -44,12 +43,11 @@ export default function AnswerInput({
 
     if (unguessedMatches.length === 0) return;
 
-    // ✅ Guess all unguessed matching players
     unguessedMatches.forEach((p) => {
       handleGuess({ preventDefault: () => {} }, p.playerName);
     });
 
-    setInput(""); // Clear after guessing
+    setInput(""); // clear after guessing
   };
 
   const suggestions =
