@@ -1,14 +1,13 @@
-
 .quiz {
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
   background: no-repeat center url("background.jpg"); 
-   background-size: cover;
-   min-height: 100vh;
-   width: 100%;
-   padding-top:80px;
+  background-size: cover;
+  min-height: 100vh;
+  width: 100%;
+  padding-top: 80px;
 }
 
 .quiz-header {
@@ -20,26 +19,24 @@
   top: 0;
   left: 0;
   gap: 15px;
-/* for background to stay put */
+  /* for background to stay put */
   position: fixed;
   z-index: 1000;
-  color:white;
-  font-family: "Helvetica";
-  font-size:1.38rem;
-  font-weight:bold;
-
-
-
-.column {
-  float:left;
-  padding: 6px 10px;
-  border-radius: 6px;
-  background: #1D428a;
   color: white;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  font-family: 'Helvetica';
+  font-family: "Helvetica";
+  font-size: 1.38rem;
+  font-weight: bold;
 
-}
+
+  .column {
+    float: left;
+    padding: 6px 10px;
+    border-radius: 6px;
+    background: #1D428a;
+    color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    font-family: 'Helvetica';
+  }
 }
 
 .input-box input {
@@ -54,25 +51,56 @@
   border-radius: 6px;
   border: none;
 }
+
 .input-w-helper {
+  position: relative; /* added for suggestions pos */
   display: flex;
   flex-direction: row;
   gap: 5px;
-  align-items:center;
-  font-size: 0.9rem
+  align-items: center;
+  font-size: 0.9rem;
 }
+
 .spelling-help-btn {
   background: #1D428a;
   color: white;
   flex: 0 0 auto;
-  font-weight:bold;
-  border: none;  border-radius: 6px;
-  
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
 }
+
 .spelling-help-btn:hover {
   background: #517ac8;
 }
 
+/* suggestions is the spelling help display */
+.suggestions {
+  position: absolute;
+  top: 100%; /* right below the input */
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 10;
+  margin-top: 4px;
+  padding: 0;
+  list-style: none;
+}
+
+.suggestion-item {
+  padding: 8px 10px;
+  cursor: pointer;
+  color: #1D428a;
+}
+
+.suggestion-item:hover {
+  background-color: #e6e9f0;
+}
 
 .score-box, 
 .timer-box {
@@ -87,11 +115,12 @@
   align-items:center;
   padding: 0;
   border-radius: 6px;
-  border: none;  
+  border: none; 
   background-color: #1D428a;
   color: white;
   cursor: pointer;
 }
+
 .pause-btn:hover {
   background: #517ac8;
 }
@@ -110,23 +139,22 @@
 
 .give-up-btn:hover {
   background: #517ac8;
-
 }
+
 /* for mobile spelling help */
 @media (max-width: 600px) {
   .input-w-helper {
-    flex-direction: row;
-    gap: 6px;
     flex-wrap: nowrap;
-    align-items: center; 
+    gap: 6px;
+    align-items: center;
   }
 
   .input-box input {
     width: auto;
-    flex: 1 1 auto;       /* input grows to fill available space */
+    flex: 1 1 auto; /* input grows to fill available space */
     min-width: 0;
     font-size: 0.85rem;
-    padding: 5px; 
+    padding: 5px;
   }
 
   .spelling-help-btn {
@@ -134,5 +162,9 @@
     font-size: 0.85rem;
     padding: 5px 8px;
     white-space: nowrap;
+  }
+
+  .suggestions {
+    max-height: 120px;
   }
 }
