@@ -21,19 +21,15 @@ export default function Quiz({
   const [revealedAll, setRevealedAll] = useState(false);
   const [guessedNames, setGuessedNames] = useState([]);
 
-    const handleGuessWithTracking = (e, name) => {
+  const handleGuessWithTracking = (e, name) => {
     const normalized = name.trim().toLowerCase();
-    const lastName = name.split(" ").slice(-1)[0].toLowerCase();
 
-    // Prevent submitting the same name or last name again
-    if (guessedNames.includes(normalized) || guessedNames.includes(lastName)) {
+    // Prevent submitting the same full name again
+    if (guessedNames.includes(normalized)) {
       return;
     }
 
-    // Track full name + last name to avoid duplicate auto-submissions
-    setGuessedNames((prev) => [...prev, normalized, lastName]);
-
-    // Call original handler
+    setGuessedNames((prev) => [...prev, normalized]);
     handleGuess(e, name);
   };
 
@@ -44,16 +40,15 @@ export default function Quiz({
 
   const totalPlayers = players.length;
 
-  // stop quiz automatically when all players guessed
   useEffect(() => {
     if (correct.length === totalPlayers) {
       setStopped(true);
       setEnded(true);
     }
-  }, [correct, totalPlayers,setEnded]);
+  }, [correct, totalPlayers, setEnded]);
 
   const handleGiveUp = () => {
-    setRevealedAll(true); // mark all players as revealed
+    setRevealedAll(true);
     setEnded(true);
     setStopped(true);
   };
@@ -120,5 +115,6 @@ export default function Quiz({
     </div>
   );
 }
+
 
 

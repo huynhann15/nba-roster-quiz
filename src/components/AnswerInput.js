@@ -1,11 +1,19 @@
+// AnswerInput.js
 import React, { useState, useMemo } from "react";
 import Fuse from "fuse.js";
 import './AnswerInput.css';
 
-export default function AnswerInput({ input, setInput, handleGuess, disabled, players = [], resumeTimer, guessedNames }) {
+export default function AnswerInput({
+  input,
+  setInput,
+  handleGuess,
+  disabled,
+  players = [],
+  resumeTimer,
+  guessedNames,
+}) {
   const [showHelp, setShowHelp] = useState(false);
 
-  //use fuse.js for suggestions
   const fuse = useMemo(
     () => new Fuse(players, { keys: ["playerName"], threshold: 0.4 }),
     [players]
@@ -15,30 +23,33 @@ export default function AnswerInput({ input, setInput, handleGuess, disabled, pl
     const val = e.target.value;
     setInput(val);
 
-    if (resumeTimer) {
-      resumeTimer();
-    }
-    //trim checking here to prevent spaces not being inputted
-    const inputLower = val.trim().toLowerCase();
+    if (resumeTimer) resumeTimer();
 
-    //blocking for duplicate exact matches
-    const alreadyGuessed = guessedNames.some(
-      (name) => name.toLowerCase() === inputLower
-    );
+    const inputTrimmed = val.trim();
+    const inputLower = inputTrimmed.toLowerCase();
 
-    if (alreadyGuessed) {
-      return;
-    }
-
-    const exactMatch = players.find((p) => {
-      const full = p.playerName.toLowerCase();
-      const last = p.playerName.split(" ").slice(-1)[0].toLowerCase();
-      return inputLower === full || inputLower === last;
+    // ✅ Match players by full name or last name
+    const matchingPlayers = players.filter((p) => {
+      const fullName = p.playerName.toLowerCase();
+      const lastName = p.playerName.split(" ").pop().toLowerCase();
+      return inputLower === fullName || inputLower === lastName;
     });
 
-    if (exactMatch) {
-      handleGuess({ preventDefault: () => {} }, val.trim());
-    }
+    // ✅ Remove already-guessed players
+    const unguessedMatches = matchingPlayers.filter((p) => {
+      return !guessedNames.some(
+        (guessed) => guessed.toLowerCase() === p.playerName.toLowerCase()
+      );
+    });
+
+    if (unguessedMatches.length === 0) return;
+
+    // ✅ Guess all unguessed matching players
+    unguessedMatches.forEach((p) => {
+      handleGuess({ preventDefault: () => {} }, p.playerName);
+    });
+
+    setInput(""); // Clear after guessing
   };
 
   const suggestions =

@@ -14,7 +14,7 @@ export default function RosterGrid({ correct, teams, selectedTeam, revealedAll }
   }
 
   if (!teamsToDisplay.length) return null;
-  
+
   return (
     <div
       className={`roster-grid-container ${
@@ -28,7 +28,9 @@ export default function RosterGrid({ correct, teams, selectedTeam, revealedAll }
 
           <div className="roster-grid">
             {teamObj.players?.map((player) => {
-              const guessed = correct.includes(player.playerName);
+              const guessed = correct.some(
+                (p) => p.playerName.toLowerCase() === player.playerName.toLowerCase()
+              );
               const showPlayer = guessed || revealedAll;
 
               return (
@@ -54,12 +56,11 @@ export default function RosterGrid({ correct, teams, selectedTeam, revealedAll }
                     </>
                   ) : (
                     <div className="placeholder">
-                    <img
+                      <img
                         src={`${process.env.PUBLIC_URL}/assets/placeholder.png`}
                         alt="placeholder"
                         className="placeholder-image"
-                    />
-
+                      />
                     </div>
                   )}
                 </div>
@@ -71,6 +72,8 @@ export default function RosterGrid({ correct, teams, selectedTeam, revealedAll }
     </div>
   );
 }
+
+
 
 
 

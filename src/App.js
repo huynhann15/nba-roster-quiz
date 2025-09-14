@@ -14,12 +14,16 @@ function App() {
   const [duration, setDuration] = useState("infinite");
   const [elapsedTime, setElapsedTime] = useState(0);
 
+  const [guessedFullNames, setGuessedFullNames] = useState(new Set());
+
   const handleGuess = (e, overrideGuess) => {
     if (e?.preventDefault) e.preventDefault();
     if (!selectedTeam) return;
 
-    const guess = (overrideGuess ?? input).trim().toLowerCase();
-    if (!guess) return;
+    const guessRaw = (overrideGuess ?? input).trim();
+    if (!guessRaw) return;
+
+    const guess = guessRaw.toLowerCase();
 
     const allPlayers =
       selectedTeam === "all"
@@ -28,16 +32,40 @@ function App() {
 
     const matches = allPlayers.filter((p) => {
       const fullName = p.playerName.trim().toLowerCase();
-      const parts = p.playerName.trim().split(" ");
-      const lastName = parts[parts.length - 1].toLowerCase();
+      const lastName = fullName.split(" ").pop();
       return fullName === guess || lastName === guess;
     });
 
-    if (matches.length > 0) {
-      setCorrect([
-        ...new Set([...correct, ...matches.map((p) => p.playerName)]),
-      ]);
+    if (matches.length === 0) {
+      setInput("");
+      return;
     }
+
+    const newMatches = matches.filter(
+      (p) => !guessedFullNames.has(p.playerName.trim().toLowerCase())
+    );
+
+    if (newMatches.length === 0) {
+      setInput("");
+      return;
+    }
+
+    setGuessedFullNames((prev) => {
+      const updated = new Set(prev);
+      newMatches.forEach((p) => updated.add(p.playerName.trim().toLowerCase()));
+      return updated;
+    });
+
+    setCorrect((prevCorrect) => {
+      const existingNames = new Set(
+        prevCorrect.map((p) => p.playerName.toLowerCase())
+      );
+      const filteredNew = newMatches.filter(
+        (p) => !existingNames.has(p.playerName.toLowerCase())
+      );
+      return [...prevCorrect, ...filteredNew];
+    });
+
     setInput("");
   };
 
@@ -67,14 +95,18 @@ function App() {
       )}
 
       {ended && selectedTeam && (
-        <ResultsScreen team={selectedTeam} correct={correct} teams={teams} elapsedTime= {elapsedTime}/>
+        <ResultsScreen
+          team={selectedTeam}
+          correct={correct}
+          teams={teams}
+          elapsedTime={elapsedTime}
+        />
       )}
     </div>
   );
 }
 
 export default App;
-
 
 
 
