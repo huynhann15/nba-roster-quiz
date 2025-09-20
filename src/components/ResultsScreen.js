@@ -31,7 +31,11 @@ export default function ResultsScreen({ team, correct, teams, elapsedTime }) {
 
       <div className="results-grid">
         {players.map((player) => {
-          const guessed = correct.includes(player.playerName);
+        const guessed = correct.some(
+          (p) =>
+          String(player.playerName).toLowerCase().includes(String(p.playerName).toLowerCase())
+        );
+
           return (
             <div
               key={player.playerId}
