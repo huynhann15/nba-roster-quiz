@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
 import teams from "./data/24-25roster.json";
-
 import StartScreen from "./components/StartScreen";
 import Quiz from "./components/Quiz";
 import ResultsScreen from "./components/ResultsScreen";
