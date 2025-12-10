@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/nba-roster-quiz/static/css/main.6692e4eb.css",
-    "main.js": "/nba-roster-quiz/static/js/main.d1524e9f.js",
+    "main.js": "/nba-roster-quiz/static/js/main.4255ac0c.js",
     "static/js/453.2eb1fd50.chunk.js": "/nba-roster-quiz/static/js/453.2eb1fd50.chunk.js",
     "static/media/background.jpg": "/nba-roster-quiz/static/media/background.99d509d8f90d526cb04a.jpg",
     "index.html": "/nba-roster-quiz/index.html",
     "main.6692e4eb.css.map": "/nba-roster-quiz/static/css/main.6692e4eb.css.map",
-    "main.d1524e9f.js.map": "/nba-roster-quiz/static/js/main.d1524e9f.js.map",
+    "main.4255ac0c.js.map": "/nba-roster-quiz/static/js/main.4255ac0c.js.map",
     "453.2eb1fd50.chunk.js.map": "/nba-roster-quiz/static/js/453.2eb1fd50.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6692e4eb.css",
-    "static/js/main.d1524e9f.js"
+    "static/js/main.4255ac0c.js"
   ]
 }
