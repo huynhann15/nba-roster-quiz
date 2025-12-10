@@ -141,6 +141,22 @@
   background: #517ac8;
 }
 
+.hint-btn{
+  font-size: 0.9rem;
+  font-family: "Helvetica";
+  font-weight: bold;
+  background: #1D428a;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.hint-btn:hover {
+  background: #517ac8;
+}
+
 /* for mobile spelling help */
 @media (max-width: 600px) {
   .input-w-helper {

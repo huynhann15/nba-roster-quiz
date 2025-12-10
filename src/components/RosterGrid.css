@@ -74,6 +74,7 @@
   height: 50px;
   width: 50px;
   margin: 5px;
+  color:black;
 
 }
 
@@ -85,7 +86,6 @@
 .player-name {
   font-weight: bold;
 }
-
 
 .roster-grid-container.single-team {
   width: 100%;   
@@ -101,6 +101,8 @@
   width: 100%;
   box-sizing: border-box;
 }
+
+
 
 /*for mobile*/
 @media (max-width: 768px) {
@@ -135,6 +137,7 @@
 
   .player-card {
     padding: 2px;
+
   }
 
   .player-card img.player-image {
@@ -150,6 +153,7 @@
   .player-card .placeholder {
     height: 50px;
     width: 50px;
+    color:black;
   }
 
   .player-card .placeholder-image {

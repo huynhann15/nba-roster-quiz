@@ -15,6 +15,8 @@ export default function Quiz({
   duration,
   teams,
   setElapsedTime,
+  showHints,
+  setShowHints
 }) {
   const [paused, setPaused] = useState(false);
   const [stopped, setStopped] = useState(false);
@@ -68,6 +70,15 @@ export default function Quiz({
           />
         </div>
 
+        <div className="column hint-box">
+          <button
+            onClick={() => setShowHints(!showHints)}
+            className={`hint-btn ${showHints ? 'active' : ''}`}
+          >
+            {showHints ? 'Hide Hint (Jersey #)' : 'Show Hint (Jersey #)'}
+          </button>
+        </div>
+
         <div className="column score-box">
           <Score correct={correct.length} total={totalPlayers} />
         </div>
@@ -82,6 +93,7 @@ export default function Quiz({
             onTimeUpdate={setElapsedTime}
           />
         </div>
+        
 
         {!stopped && (
           <div className="column pause-box">
@@ -100,6 +112,7 @@ export default function Quiz({
         )}
       </div>
 
+
       <RosterGrid
         teams={teams}
         selectedTeam={
@@ -111,6 +124,7 @@ export default function Quiz({
         }
         correct={correct}
         revealedAll={revealedAll}
+        showHints={showHints}
       />
     </div>
   );

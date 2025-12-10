@@ -1,7 +1,7 @@
 import React from "react";
 import "./RosterGrid.css";
 
-export default function RosterGrid({ correct, teams, selectedTeam, revealedAll }) {
+export default function RosterGrid({ correct, teams, selectedTeam, revealedAll, showHints }) {
   let teamsToDisplay = [];
   const isAllTeams = selectedTeam === "all";
 
@@ -61,6 +61,9 @@ export default function RosterGrid({ correct, teams, selectedTeam, revealedAll }
                         alt="placeholder"
                         className="placeholder-image"
                       />
+                        {showHints && player.jerseyNumber && (
+                        <div className="jersey-hint">#{player.jerseyNumber}</div>
+                      )}
                     </div>
                   )}
                 </div>

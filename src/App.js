@@ -13,8 +13,8 @@ function App() {
   const [input, setInput] = useState("");
   const [duration, setDuration] = useState("infinite");
   const [elapsedTime, setElapsedTime] = useState(0);
-
   const [guessedFullNames, setGuessedFullNames] = useState(new Set());
+  const [showHints, setShowHints] = useState(false);
 
   const handleGuess = (e, overrideGuess) => {
     if (e?.preventDefault) e.preventDefault();
@@ -91,6 +91,8 @@ function App() {
           duration={duration}
           teams={teams}
           setElapsedTime={setElapsedTime}
+          showHints={showHints}
+          setShowHints={setShowHints}
         />
       )}
 

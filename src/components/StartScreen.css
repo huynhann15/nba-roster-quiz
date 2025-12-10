@@ -5,11 +5,13 @@ body {
   background-size: cover;
   background-attachment: fixed;
   font-family: Helvetica;
+  color:#1D428a;
 }
 
 /* Scoped to start screen only */
 .start-screen .team-grid {
   display: grid;
+  color:#1D428a;
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   gap: 12px;
   margin-top: 16px;
