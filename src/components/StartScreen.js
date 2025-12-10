@@ -47,7 +47,7 @@ export default function StartScreen({ teams, setSelectedTeam, setDuration }) {
       <button onClick={() => setDuration("infinite")}>∞</button>
       <p>(Click the infinity button for unlimited time)</p>
 
-      <p>Select a team:</p>
+      <p>Scroll to find your team and select:</p>
       <div className="team-grid">
         <div
           className={`team-card ${selectedTeamValue === "all" ? "selected" : ""}`}
