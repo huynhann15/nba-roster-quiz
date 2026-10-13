@@ -1960,6 +1960,20 @@
       "jerseyNumber": "00"
     },
     {
+      "playerId": 1630544,
+      "playerName": "Tre Mann",
+      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1630544.png",
+      "position": "G",
+      "jerseyNumber": "1"
+    },
+    {
+      "playerId": 1631211,
+      "playerName": "Trevor Keels",
+      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1631211.png",
+      "position": "G",
+      "jerseyNumber": "3"
+    },
+    {
       "playerId": 1629027,
       "playerName": "Trae Young",
       "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1629027.png",
@@ -1977,14 +1991,7 @@
       "playerId": 1642364,
       "playerName": "Jamir Watkins",
       "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1642364.png",
-      "position": "G",
-      "jerseyNumber": "5"
-    },
-    {
-      "playerId": 1629028,
-      "playerName": "Deandre Ayton",
-      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1629028.png",
-      "position": "C",
+      "position": "F",
       "jerseyNumber": "5"
     },
     {
@@ -1994,12 +2001,32 @@
       "position": "G",
       "jerseyNumber": "7"
     },
-
+    {
+      "playerId": 1627746,
+      "playerName": "Skal Labissiere",
+      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1627746.png",
+      "position": "F-C",
+      "jerseyNumber": "7"
+    },
+    {
+      "playerId": 1629028,
+      "playerName": "Deandre Ayton",
+      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1629028.png",
+      "position": "C",
+      "jerseyNumber": "8"
+    },
+    {
+      "playerId": 1641753,
+      "playerName": "Chris Livingston",
+      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1641753.png",
+      "position": "F",
+      "jerseyNumber": "8"
+    },
     {
       "playerId": 1630551,
       "playerName": "Justin Champagnie",
       "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1630551.png",
-      "position": "F",
+      "position": "G-F",
       "jerseyNumber": "9"
     },
     {
@@ -2010,17 +2037,10 @@
       "jerseyNumber": "12"
     },
     {
-      "playerId": 1630536,
-      "playerName": "Sharife Cooper",
-      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1630536.png",
-      "position": "G",
-      "jerseyNumber": "13"
-    },
-    {
       "playerId": 1630264,
       "playerName": "Anthony Gill",
       "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1630264.png",
-      "position": "G",
+      "position": "F",
       "jerseyNumber": "16"
     },
     {
@@ -2045,24 +2065,24 @@
       "jerseyNumber": "22"
     },
     {
-      "playerId": 1630544,
-      "playerName": "Tre Mann",
-      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1630544.png",
-      "position": "G",
-      "jerseyNumber": "23"
-    },
-    {
       "playerId": 203076,
       "playerName": "Anthony Davis",
       "image": "https://cdn.nba.com/headshots/nba/latest/260x190/203076.png",
-      "position": "F",
+      "position": "F-C",
       "jerseyNumber": "23"
+    },
+    {
+      "playerId": 1641736,
+      "playerName": "Reece Beekman",
+      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1641736.png",
+      "position": "G",
+      "jerseyNumber": "26"
     },
     {
       "playerId": 1642860,
       "playerName": "Will Riley",
       "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1642860.png",
-      "position": "G",
+      "position": "F",
       "jerseyNumber": "27"
     },
     {
@@ -2070,7 +2090,7 @@
       "playerName": "Felix Okpara",
       "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1643590.png",
       "position": "C",
-      "jerseyNumber": null
+      "jerseyNumber": "34"
     }
   ]
 }
