@@ -1,4 +1,5 @@
 import React, { useMemo } from "react";
+import RosterGrid from "./RosterGrid";
 
 export default function ResultsScreen({ team, correct, teams, elapsedTime }) {
   const totalSecs = Math.ceil(elapsedTime / 1000);
@@ -28,39 +29,16 @@ export default function ResultsScreen({ team, correct, teams, elapsedTime }) {
         Time: <strong>{minutes}:{pad(seconds)}</strong>
       </p>
 
-      <div className="grid grid-cols-[repeat(auto-fill,minmax(100px,1fr))] gap-[10px] justify-items-center items-start">
-        {players.map((player) => {
-          const guessed = correct.some(
-            (p) =>
-              String(player.playerName).toLowerCase().includes(String(p.playerName).toLowerCase())
-          );
-
-          return (
-            <div
-              key={player.playerId}
-              className={`flex flex-col items-center w-full max-w-[120px] h-[140px] p-[5px] rounded-md text-center box-border ${
-                guessed ? "bg-[#d4edda]" : "bg-[#f8d7da]"
-              }`}
-            >
-              {player.image && (
-                <img
-                  src={player.image}
-                  alt={player.playerName}
-                  className="w-20 h-20 rounded-full object-cover mb-[5px]"
-                />
-              )}
-              <p className="text-[0.8rem] font-bold font-helvetica [word-break:break-word] mb-[15px]">
-                {player.playerName}
-              </p>
-              {!guessed && (
-                <p className="mt-[2px] mb-[15px] text-[0.8rem] font-helvetica font-bold text-[rgb(200,4,4)]">
-                  Missed
-                </p>
-              )}
-            </div>
-          );
-        })}
-      </div>
+      {/* same layout as the quiz board, with every player revealed:
+          green = guessed, pink + "Missed" = not guessed */}
+      <RosterGrid
+        teams={teams}
+        selectedTeam={team}
+        correct={correct}
+        revealedAll={true}
+        showHints={false}
+        variant="results"
+      />
     </div>
   );
 }
