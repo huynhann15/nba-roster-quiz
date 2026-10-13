@@ -41,7 +41,7 @@ export default function StartScreen({ teams, setSelectedTeam, setDuration }) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="start-title"
-        className="w-full max-w-3xl max-h-[90vh] overflow-y-auto p-6 rounded-xl bg-nba-mist/80 text-center text-nba shadow-2xl
+        className="w-full max-w-3xl max-h-[90vh] overflow-y-auto p-6 rounded-xl bg-[#f0f0f0]/80 text-center text-nba shadow-2xl
                    max-[600px]:p-4"
       >
         <h1 id="start-title" className="mt-0 mb-3 text-[2rem] max-[600px]:text-[1.5rem]">
