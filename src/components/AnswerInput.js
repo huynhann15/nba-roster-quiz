@@ -1,6 +1,5 @@
 import React, { useState, useMemo } from "react";
 import Fuse from "fuse.js";
-import './AnswerInput.css';
 
 export default function AnswerInput({
   input,
@@ -56,8 +55,9 @@ export default function AnswerInput({
       : [];
 
   return (
-    <div className="answer-input-container">
-      <div className="input-w-helper">
+    <div>
+      {/* input + spelling help row */}
+      <div className="relative flex flex-row items-center gap-[5px] text-[0.9rem] max-[600px]:flex-nowrap max-[600px]:gap-[6px]">
         <input
           type="text"
           value={input}
@@ -66,23 +66,31 @@ export default function AnswerInput({
           disabled={disabled}
           autoFocus
           autoComplete="off"
+          className="flex-[0_0_200px] w-[250px] p-[6px] text-[0.89rem] rounded-md border-0 bg-nba-mist text-nba
+                     max-[600px]:w-auto max-[600px]:flex-[1_1_auto] max-[600px]:min-w-0 max-[600px]:text-[0.85rem] max-[600px]:p-[5px]"
         />
         <button
           type="button"
-          className="spelling-help-btn"
           onClick={() => setShowHelp(!showHelp)}
           disabled={disabled}
+          className="flex-none bg-nba text-white font-bold border-0 rounded-md hover:bg-nba-hover
+                     max-[600px]:text-[0.85rem] max-[600px]:px-2 max-[600px]:py-[5px] max-[600px]:whitespace-nowrap"
         >
           {showHelp ? "Hide Spelling Help" : "Show Spelling Help"}
         </button>
 
+        {/* spelling help dropdown */}
         {showHelp && suggestions.length > 0 && (
-          <ul className="suggestions">
+          <ul
+            className="absolute top-full left-0 z-10 w-full mt-1 p-0 list-none bg-white
+                       border border-solid border-[#ccc] rounded-md shadow-[0_4px_8px_rgba(0,0,0,0.1)]
+                       max-h-[150px] overflow-y-auto max-[600px]:max-h-[120px]"
+          >
             {suggestions.map((name, idx) => (
               <li
                 key={idx}
                 onClick={() => setInput(name)}
-                className="suggestion-item"
+                className="px-[10px] py-2 cursor-pointer text-nba hover:bg-nba-mist"
               >
                 {name}
               </li>

@@ -4,6 +4,13 @@ import Score from "./Score";
 import AnswerInput from "./AnswerInput";
 import RosterGrid from "./RosterGrid";
 
+// shared header "pill" style (old .quiz-header .column)
+const column =
+  "float-left px-2 py-1 rounded bg-nba text-white font-helvetica shadow-[0_1px_3px_rgba(0,0,0,0.1)]";
+
+// shared blue button look
+const blueBtn = "bg-nba text-white border-0 cursor-pointer hover:bg-nba-hover";
+
 export default function Quiz({
   selectedTeam,
   correct,
@@ -56,9 +63,10 @@ export default function Quiz({
   };
 
   return (
-    <div className="quiz">
-      <div className="quiz-header">
-        <div className="column input-box">
+    <div className="flex flex-col flex-wrap items-center w-full min-h-screen pt-20 bg-court bg-no-repeat bg-center bg-cover">
+      {/* fixed header */}
+      <div className="fixed top-0 left-0 z-[1000] flex flex-wrap items-center gap-[15px] w-full mr-[10px] text-white font-helvetica text-[1.38rem] font-bold">
+        <div className={column}>
           <AnswerInput
             input={input}
             setInput={setInput}
@@ -70,20 +78,20 @@ export default function Quiz({
           />
         </div>
 
-        <div className="column hint-box">
+        <div className={column}>
           <button
             onClick={() => setShowHints(!showHints)}
-            className={`hint-btn ${showHints ? 'active' : ''}`}
+            className={`${blueBtn} text-[0.9rem] font-helvetica font-bold rounded-[3px] px-[5px] py-[3px]`}
           >
             {showHints ? 'Hide Hint (Jersey #)' : 'Show Hint (Jersey #)'}
           </button>
         </div>
 
-        <div className="column score-box">
+        <div className={`${column} text-base`}>
           <Score correct={correct.length} total={totalPlayers} />
         </div>
 
-        <div className="column timer-box">
+        <div className={`${column} text-base`}>
           Timer:
           <Timer
             duration={duration}
@@ -93,25 +101,29 @@ export default function Quiz({
             onTimeUpdate={setElapsedTime}
           />
         </div>
-        
 
         {!stopped && (
-          <div className="column pause-box">
-            <button className="pause-btn" onClick={() => setPaused(!paused)}>
+          <div className={column}>
+            <button
+              onClick={() => setPaused(!paused)}
+              className={`${blueBtn} text-[0.7rem] w-3 h-3 p-0 rounded`}
+            >
               {paused ? "►" : "⏸"}
             </button>
           </div>
         )}
 
         {!stopped && (
-          <div className="column give-up-box">
-            <button className="give-up-btn" onClick={handleGiveUp}>
+          <div className={column}>
+            <button
+              onClick={handleGiveUp}
+              className={`${blueBtn} text-[0.9rem] font-bold rounded-[5px] px-[10px] py-[6px]`}
+            >
               Give Up?
             </button>
           </div>
         )}
       </div>
-
 
       <RosterGrid
         teams={teams}
