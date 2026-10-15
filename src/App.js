@@ -69,6 +69,18 @@ function App() {
     setInput("");
   };
 
+  // reset everything back to the start pop-up
+  const handlePlayAgain = () => {
+    setSelectedTeam(null); // unmounts Quiz, which also resets its own internal state
+    setEnded(false);
+    setCorrect([]);
+    setInput("");
+    setDuration("infinite");
+    setElapsedTime(0);
+    setGuessedFullNames(new Set());
+    setShowHints(false);
+  };
+
   return (
     <div className="App">
       {!selectedTeam && (
@@ -79,7 +91,8 @@ function App() {
         />
       )}
 
-      {selectedTeam && !ended && (
+      {/* stays on screen after the game ends so the results pop up over it */}
+      {selectedTeam && (
         <Quiz
           selectedTeam={selectedTeam}
           correct={correct}
@@ -102,6 +115,7 @@ function App() {
           correct={correct}
           teams={teams}
           elapsedTime={elapsedTime}
+          onPlayAgain={handlePlayAgain}
         />
       )}
     </div>
