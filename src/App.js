@@ -5,6 +5,7 @@ import teams from "./data/25-26rost.json";
 import StartScreen from "./components/StartScreen";
 import Quiz from "./components/Quiz";
 import ResultsScreen from "./components/ResultsScreen";
+import RosterGrid from "./components/RosterGrid";
 
 function App() {
   const [selectedTeam, setSelectedTeam] = useState(null);
@@ -84,11 +85,27 @@ function App() {
   return (
     <div className="App">
       {!selectedTeam && (
-        <StartScreen
-          teams={teams}
-          setSelectedTeam={setSelectedTeam}
-          setDuration={setDuration}
-        />
+        <>
+          {/* empty "All Teams" board shown behind the start pop-up (display only, not clickable) */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none select-none min-h-screen pt-20 bg-court bg-no-repeat bg-center bg-cover"
+          >
+            <RosterGrid
+              teams={teams}
+              selectedTeam="all"
+              correct={[]}
+              revealedAll={false}
+              showHints={false}
+            />
+          </div>
+
+          <StartScreen
+            teams={teams}
+            setSelectedTeam={setSelectedTeam}
+            setDuration={setDuration}
+          />
+        </>
       )}
 
       {/* stays on screen after the game ends so the results pop up over it */}
