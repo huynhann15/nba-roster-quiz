@@ -85,14 +85,17 @@ export default function RosterGrid({ correct, teams, selectedTeam, revealedAll, 
                     </>
                   ) : (
                     <div className="flex items-center justify-center w-[50px] h-[50px] m-[5px] text-black">
-                      <img
-                        src={`${process.env.PUBLIC_URL}/assets/placeholder.png`}
-                        alt="placeholder"
-                        className={`w-10 h-10 ${md}:w-8 ${md}:h-8`}
-                      />
-                      {showHints && player.jerseyNumber && (
-                        <div>#{player.jerseyNumber}</div>
-                      )}
+                      {showHints && player.jerseyNumber ? (
+                        <div className={`font-helvetica font-bold text-[1.5rem] text-black ${md}:text-[1.2rem]`}>
+                          #{player.jerseyNumber}
+                        </div>
+                       ) : (
+                          <img
+                            src={`${process.env.PUBLIC_URL}/assets/placeholder.png`}
+                            alt="placeholder"
+                            className={`w-10 h-10 ${md}:w-8 ${md}:h-8`}
+                          />
+                        )}
                     </div>
                   )}
                 </div>
