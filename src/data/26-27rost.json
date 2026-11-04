@@ -18,6 +18,13 @@
       "jerseyNumber": "4"
     },
     {
+      "playerId": 1631199,
+      "playerName": "Ron Harper",
+      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1631199.png",
+      "position": "G",
+      "jerseyNumber": "8"
+    },
+    {
       "playerId": 1628401,
       "playerName": "Derrick White",
       "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1628401.png",
@@ -37,13 +44,6 @@
       "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1643416.png",
       "position": "F",
       "jerseyNumber": "12"
-    },
-    {
-      "playerId": 1631199,
-      "playerName": "Ron Harper",
-      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1631199.png",
-      "position": "G",
-      "jerseyNumber": "13"
     },
     {
       "playerId": 202331,
@@ -310,20 +310,6 @@
       "jerseyNumber": "8"
     },
     {
-      "playerId": 1641755,
-      "playerName": "Kevin McCullar",
-      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1641755.png",
-      "position": "G",
-      "jerseyNumber": "9"
-    },
-    {
-      "playerId": 1630164,
-      "playerName": "James Wiseman",
-      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1630164.png",
-      "position": "C",
-      "jerseyNumber": "11"
-    },
-    {
       "playerId": 1628973,
       "playerName": "Jalen Brunson",
       "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1628973.png",
@@ -338,11 +324,25 @@
       "jerseyNumber": "13"
     },
     {
+      "playerId": 1643022,
+      "playerName": "Jaden Akins",
+      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1643022.png",
+      "position": "G",
+      "jerseyNumber": "14"
+    },
+    {
       "playerId": 1628969,
       "playerName": "Mikal Bridges",
       "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1628969.png",
       "position": "G",
       "jerseyNumber": "25"
+    },
+    {
+      "playerId": 1630164,
+      "playerName": "James Wiseman",
+      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1630164.png",
+      "position": "C",
+      "jerseyNumber": "35"
     },
     {
       "playerId": 1626157,
@@ -373,11 +373,11 @@
       "jerseyNumber": "55"
     },
     {
-      "playerId": 1643022,
-      "playerName": "Jaden Akins",
-      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1643022.png",
-      "position": "G",
-      "jerseyNumber": ""
+      "playerId": 1642261,
+      "playerName": "Dalton Knecht",
+      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1642261.png",
+      "position": "F",
+      "jerseyNumber": "99"
     }
   ]
 },
@@ -386,20 +386,19 @@
   "season": "2026-27",
   "players": [
     {
-      "playerId": 1630178,
-      "playerName": "Tyrese Maxey",
-      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1630178.png",
-      "position": "G",
-      "jerseyNumber": "0"
-    },
-    {
       "playerId": 1642889,
       "playerName": "Labaron Philon",
       "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1642889.png",
       "position": "G",
       "jerseyNumber": "00"
     },
-
+    {
+      "playerId": 1630178,
+      "playerName": "Tyrese Maxey",
+      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1630178.png",
+      "position": "G",
+      "jerseyNumber": "0"
+    },
     {
       "playerId": 203484,
       "playerName": "Kentavious Caldwell-Pope",
@@ -426,7 +425,7 @@
       "playerName": "Caleb Love",
       "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1631126.png",
       "position": "G",
-      "jerseyNumber": "9"
+      "jerseyNumber": "8"
     },
     {
       "playerId": 1642348,
@@ -504,20 +503,6 @@
       "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1629605.png",
       "position": "C",
       "jerseyNumber": "99"
-    },
-    {
-      "playerId": 1643575,
-      "playerName": "Duke Miles",
-      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1643575.png",
-      "position": "G",
-      "jerseyNumber": null
-    },
-    {
-      "playerId": 1642392,
-      "playerName": "Jameer Nelson",
-      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1642392.png",
-      "position": "G",
-      "jerseyNumber": null
     }
   ]
 },
@@ -526,25 +511,18 @@
   "season": "2026-27",
   "players": [
     {
-      "playerId": 1630639,
-      "playerName": "A.J. Lawson",
-      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1630639.png",
-      "position": "G",
-      "jerseyNumber": "0"
-    },
-    {
-      "playerId": 1641711,
-      "playerName": "Gradey Dick",
-      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1641711.png",
+      "playerId": 1642347,
+      "playerName": "Jamal Shead",
+      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1642347.png",
       "position": "G",
       "jerseyNumber": "1"
     },
     {
-      "playerId": 1627742,
-      "playerName": "Brandon Ingram",
-      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1627742.png",
+      "playerId": 202695,
+      "playerName": "Kawhi Leonard",
+      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/202695.png",
       "position": "F",
-      "jerseyNumber": "3"
+      "jerseyNumber": "2"
     },
     {
       "playerId": 1630567,
@@ -565,7 +543,7 @@
       "playerName": "Jaden Bradley",
       "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1643558.png",
       "position": "G",
-      "jerseyNumber": null
+      "jerseyNumber": "8"
     },
     {
       "playerId": 1629628,
@@ -579,7 +557,7 @@
       "playerName": "Kyle Anderson",
       "image": "https://cdn.nba.com/headshots/nba/latest/260x190/203937.png",
       "position": "F",
-      "jerseyNumber": "12"
+      "jerseyNumber": "13"
     },
     {
       "playerId": 1642266,
@@ -610,20 +588,6 @@
       "jerseyNumber": "22"
     },
     {
-      "playerId": 1642347,
-      "playerName": "Jamal Shead",
-      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1642347.png",
-      "position": "G",
-      "jerseyNumber": "23"
-    },
-    {
-      "playerId": 1642935,
-      "playerName": "Chucky Hepburn",
-      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1642935.png",
-      "position": "G",
-      "jerseyNumber": "24"
-    },
-    {
       "playerId": 1642867,
       "playerName": "Collin Murray-Boyles",
       "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1642867.png",
@@ -636,20 +600,6 @@
       "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1631218.png",
       "position": "F",
       "jerseyNumber": "32"
-    },
-    {
-      "playerId": 1641748,
-      "playerName": "Andre Jackson",
-      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1641748.png",
-      "position": "G",
-      "jerseyNumber": "44"
-    },
-    {
-      "playerId": 1641998,
-      "playerName": "Trey Jemison",
-      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1641998.png",
-      "position": "C",
-      "jerseyNumber": "50"
     },
     {
       "playerId": 1642918,
@@ -670,7 +620,7 @@
       "playerName": "Nate Bittle",
       "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1642927.png",
       "position": "C",
-      "jerseyNumber": null
+      "jerseyNumber": ""
     }
   ]
 },
