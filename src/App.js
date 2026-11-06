@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import teams from "./data/25-26rost.json";
+import teams from "./data/26-27rost.json";
 
 import StartScreen from "./components/StartScreen";
 import Quiz from "./components/Quiz";
