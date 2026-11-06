@@ -553,6 +553,13 @@
       "jerseyNumber": "9"
     },
     {
+      "playerId": 1642927,
+      "playerName": "Nate Bittle",
+      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1642927.png",
+      "position": "C",
+      "jerseyNumber": "12"
+    },
+    {
       "playerId": 203937,
       "playerName": "Kyle Anderson",
       "image": "https://cdn.nba.com/headshots/nba/latest/260x190/203937.png",
@@ -614,13 +621,6 @@
       "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1642419.png",
       "position": "F",
       "jerseyNumber": "77"
-    },
-    {
-      "playerId": 1642927,
-      "playerName": "Nate Bittle",
-      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1642927.png",
-      "position": "C",
-      "jerseyNumber": ""
     }
   ]
 },
@@ -858,20 +858,21 @@
       "position": "G",
       "jerseyNumber": "45"
     },
+        {
+      "playerId": 1641807,
+      "playerName": "Norchad Omier",
+      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1641807.png",
+      "position": "F",
+      "jerseyNumber": "77"
+    },
     {
       "playerId": 1643640,
       "playerName": "Ernest Udeh",
       "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1643640.png",
       "position": "C",
       "jerseyNumber": "88"
-    },
-    {
-      "playerId": 1641807,
-      "playerName": "Norchad Omier",
-      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1641807.png",
-      "position": "F",
-      "jerseyNumber": ""
     }
+
   ]
 },
 {
@@ -2887,6 +2888,13 @@
       "jerseyNumber": "14"
     },
     {
+      "playerId": 1643133,
+      "playerName": "Lawson Lovering",
+      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1643133.png",
+      "position": "C",
+      "jerseyNumber": "18"
+    },
+    {
       "playerId": 1630559,
       "playerName": "Austin Reaves",
       "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1630559.png",
@@ -2934,13 +2942,6 @@
       "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1629029.png",
       "position": "F",
       "jerseyNumber": "77"
-    },
-    {
-      "playerId": 1643133,
-      "playerName": "Lawson Lovering",
-      "image": "https://cdn.nba.com/headshots/nba/latest/260x190/1643133.png",
-      "position": "C",
-      "jerseyNumber": ""
     }
   ]
 },
