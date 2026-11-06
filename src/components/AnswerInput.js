@@ -67,7 +67,7 @@ export default function AnswerInput({
           autoFocus
           autoComplete="off"
           className="flex-[0_0_200px] w-[250px] p-[6px] text-[0.89rem] rounded-md border-0 bg-nba-mist text-nba
-                     max-[600px]:w-auto max-[600px]:flex-[1_1_auto] max-[600px]:min-w-0 max-[600px]:text-[0.85rem] max-[600px]:p-[5px]"
+                     max-[600px]:w-auto max-[600px]:flex-[1_1_auto] max-[600px]:min-w-0 max-[600px]:text-base max-[600px]:p-[5px]"
         />
         <button
           type="button"
